@@ -1,0 +1,449 @@
+/* Color Palette Extracted from Your Image */
+:root {
+    --bg-cream: #EDEBE0;       /* Top light warm cream */
+    --sage-olive: #687C4C;     /* Second medium olive green */
+    --forest-dark: #44532E;    /* Third deep forest green */
+    --sage-muted: #9BA889;     /* Bottom soft sage green */
+    --white: #FFFFFF;
+    --text-dark: #252E19;
+    --text-muted: #4F5B3E;
+    --danger: #b03a2e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--forest-dark);
+    color: var(--bg-cream);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: var(--sage-muted);
+}
+
+.logo h1 {
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    color: var(--white);
+}
+
+.logo span {
+    font-size: 0.85rem;
+    color: var(--sage-muted);
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--bg-cream);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--sage-muted);
+}
+
+/* Buttons */
+.btn-admin {
+    background-color: var(--sage-olive);
+    color: var(--white);
+    border: 1px solid var(--sage-muted);
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-admin:hover {
+    background-color: var(--sage-muted);
+    color: var(--forest-dark);
+}
+
+.btn-primary {
+    background-color: var(--forest-dark);
+    color: var(--white);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--sage-olive);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--bg-cream);
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-cream);
+    color: var(--forest-dark);
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--sage-olive), var(--forest-dark));
+    color: var(--white);
+    padding: 65px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    color: var(--bg-cream);
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    font-size: 1.1rem;
+    color: var(--bg-cream);
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero .btn-primary {
+    background-color: var(--bg-cream);
+    color: var(--forest-dark);
+}
+
+.hero .btn-primary:hover {
+    background-color: var(--sage-muted);
+    color: var(--forest-dark);
+}
+
+/* Owner Admin Panel */
+.admin-panel {
+    background-color: var(--sage-muted);
+    padding: 35px 0;
+    border-bottom: 4px solid var(--forest-dark);
+}
+
+.admin-panel.hidden {
+    display: none;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.admin-header h3 {
+    color: var(--forest-dark);
+    font-size: 1.4rem;
+}
+
+.btn-close {
+    background: var(--forest-dark);
+    color: var(--white);
+    border: none;
+    font-size: 1.4rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.admin-note {
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.admin-card {
+    background-color: var(--bg-cream);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.admin-card h4 {
+    color: var(--forest-dark);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--sage-muted);
+    padding-bottom: 8px;
+}
+
+.admin-card label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: var(--forest-dark);
+}
+
+.admin-card input,
+.admin-card select,
+.admin-card textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--sage-olive);
+    border-radius: 6px;
+    background-color: var(--white);
+    font-size: 0.95rem;
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: var(--forest-dark);
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: var(--text-muted);
+}
+
+/* Daily Updates Section */
+.updates-section {
+    padding: 60px 0;
+}
+
+.updates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 22px;
+}
+
+.update-card {
+    background-color: var(--white);
+    border-left: 6px solid var(--sage-olive);
+    border-radius: 8px;
+    padding: 22px;
+    box-shadow: 0 4px 10px rgba(68, 83, 46, 0.08);
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.update-card:hover {
+    transform: translateY(-4px);
+}
+
+.update-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.badge {
+    background-color: var(--sage-olive);
+    color: var(--white);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.update-date {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.update-card h3 {
+    color: var(--forest-dark);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.update-card p {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+/* Services Section */
+.services-section {
+    background-color: rgba(155, 168, 137, 0.28); /* Soft tint of bottom sage green */
+    padding: 60px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+
+.service-card {
+    background-color: var(--bg-cream);
+    border: 1px solid var(--sage-muted);
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+    background-color: var(--white);
+    border-color: var(--sage-olive);
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--forest-dark);
+    color: var(--bg-cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 1.6rem;
+    border: 3px solid var(--sage-muted);
+}
+
+.service-card h3 {
+    color: var(--forest-dark);
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+}
+
+.service-card p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+/* Delete Button (Visible only when Owner Panel is open) */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--danger);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: none;
+}
+
+body.admin-mode .delete-btn {
+    display: inline-block;
+}
+
+/* Footer */
+footer {
+    background-color: var(--forest-dark);
+    color: var(--bg-cream);
+    padding-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-info {
+    max-width: 600px;
+}
+
+.footer-info h3 {
+    color: var(--white);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.footer-hours h4 {
+    color: var(--sage-muted);
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    background-color: #323e21;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    color: var(--sage-muted);
+}

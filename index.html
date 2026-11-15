@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Net Cafe - Muhammad Nadeem</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for clean professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-globe"></i>
+                <div>
+                    <h1>Geo Net Cafe</h1>
+                    <span>Proprietor: Muhammad Nadeem</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#updates">Daily Updates</a>
+                <a href="#services">Our Services</a>
+                <a href="#contact">Contact</a>
+                <button id="adminToggleBtn" class="btn-admin">
+                    <i class="fa-solid fa-user-shield"></i> Owner Panel
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Your Trusted Digital, Documentation & Printing Hub</h2>
+            <p>Fast, reliable online applications, E-Stamp papers, biometric verification, board admissions, and studio printing services under one roof.</p>
+            <div class="hero-buttons">
+                <a href="#updates" class="btn-primary">View Latest Jobs & Updates</a>
+                <a href="#services" class="btn-secondary">Explore All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owner Admin Panel (Hidden by default, toggled via Owner Panel button) -->
+    <section id="adminSection" class="admin-panel hidden">
+        <div class="container">
+            <div class="admin-header">
+                <h3><i class="fa-solid fa-sliders"></i> Shop Owner Control Panel (Muhammad Nadeem)</h3>
+                <button id="closeAdminBtn" class="btn-close">&times;</button>
+            </div>
+            <p class="admin-note">Add new daily updates (govt jobs, schemes, board dates) or add new services to your shop anytime.</p>
+            
+            <div class="admin-grid">
+                <!-- Form to Add Daily Update -->
+                <div class="admin-card">
+                    <h4><i class="fa-solid fa-bullhorn"></i> Post New Daily Update</h4>
+                    <form id="addUpdateForm">
+                        <label>Update Title (e.g., Punjab Police Jobs 2026)</label>
+                        <input type="text" id="updateTitle" placeholder="Enter job, scheme, or news title..." required>
+                        
+                        <label>Category</label>
+                        <select id="updateCategory">
+                            <option value="Govt Jobs">New Govt Jobs</option>
+                            <option value="Online Scheme">Online Scheme / Registration</option>
+                            <option value="Board & Results">Lahore Board / Results</option>
+                            <option value="Shop Notice">Shop Notice</option>
+                        </select>
+
+                        <label>Details / Required Documents</label>
+                        <textarea id="updateDesc" rows="3" placeholder="Enter details, last date, or required documents..." required></textarea>
+                        
+                        <button type="submit" class="btn-primary full-width">Publish Update Now</button>
+                    </form>
+                </div>
+
+                <!-- Form to Add New Service -->
+                <div class="admin-card">
+                    <h4><i class="fa-solid fa-plus-circle"></i> Add New Shop Service</h4>
+                    <form id="addServiceForm">
+                        <label>Service Name</label>
+                        <input type="text" id="serviceTitle" placeholder="e.g., Utility Bill Payment, Domicile..." required>
+                        
+                        <label>Choose Icon</label>
+                        <select id="serviceIcon">
+                            <option value="fa-stamp">Official Stamp / Document</option>
+                            <option value="fa-fingerprint">Biometric / Verification</option>
+                            <option value="fa-id-card">Card / License / PVC</option>
+                            <option value="fa-graduation-cap">Education / Board / Result</option>
+                            <option value="fa-camera">Photo / Frame / Printing</option>
+                            <option value="fa-car">Number Plate / Vehicle</option>
+                            <option value="fa-pen-ruler">Stationery / Supplies</option>
+                            <option value="fa-laptop">Online Apply / General</option>
+                        </select>
+
+                        <label>Short Description</label>
+                        <textarea id="serviceDesc" rows="3" placeholder="Describe what you offer for this service..." required></textarea>
+                        
+                        <button type="submit" class="btn-primary full-width">Add Service to Website</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Updates & News Board -->
+    <section id="updates" class="updates-section">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-bell"></i> Daily Updates, Govt Jobs & Schemes</h2>
+                <p>Updated regularly with the latest online applications, schemes, and announcements</p>
+            </div>
+            
+            <!-- Updates will be dynamically loaded here by JavaScript -->
+            <div id="updatesContainer" class="updates-grid"></div>
+        </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-briefcase"></i> Our Complete Services</h2>
+                <p>Professional documentation, online processing, and printing solutions</p>
+            </div>
+
+            <!-- Services will be dynamically loaded here by JavaScript -->
+            <div id="servicesContainer" class="services-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Geo Net Cafe</h3>
+                <p><strong>Owner:</strong> Muhammad Nadeem</p>
+                <p><strong>Services:</strong> E-Stamp, Biometric, PVC Cards, Learner License, Govt Jobs Apply, Lahore Board Admissions & Results, Studio Photos, A4 Frames, Number Plates & Stationery.</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Shop Timings</h4>
+                <p>Monday – Saturday: 9:00 AM – 9:00 PM</p>
+                <p>Sunday: Open for Urgent Online Applications</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Geo Net Cafe | Managed by Muhammad Nadeem. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
