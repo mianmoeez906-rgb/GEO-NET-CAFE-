@@ -30,7 +30,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Shop Picture Option -->
     <section class="hero">
         <div class="container hero-content-wrapper">
             <div class="hero-text hero-animate">
@@ -45,26 +45,35 @@
                 </div>
             </div>
             <div class="hero-card-visual">
-                <div class="floating-box">
-                    <i class="fa-solid fa-store"></i>
-                    <div>
+                <!-- 
+                  =========================================================
+                  SHOP PICTURE CUSTOMIZATION (Line 54 qareeb):
+                  Agar aap yahan apni shop ki real picture lagana chahte hain, 
+                  toh 'src' mein apni image ka link ya file name (jaise 'shop.jpg') 
+                  likh dein. Agar image na ho toh default icon show hoga.
+                  =========================================================
+                -->
+                <div class="shop-photo-card">
+                    <img src="" alt="Geo Net Cafe Shop Photo" id="shopRealPhoto" onerror="this.style.display='none'; document.getElementById('fallbackShopIcon').style.display='block';">
+                    <div id="fallbackShopIcon" style="display:block;">
+                        <i class="fa-solid fa-store"></i>
                         <h4>Geo Net Cafe</h4>
+                        <p>Peoples Colony, Ferozewala</p>
                         <p>WhatsApp: 0314-4409322</p>
-                        <p>Phone: 0300-4119322</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Secret Owner Admin Panel (Hidden from Users) -->
+    <!-- Secret Owner Admin Panel -->
     <section id="adminSection" class="admin-panel hidden">
         <div class="container">
             <div class="admin-header">
                 <h3><i class="fa-solid fa-sliders"></i> Shop Owner Control Panel (Muhammad Nadeem)</h3>
                 <button id="closeAdminBtn" class="btn-close">&times;</button>
             </div>
-            <p class="admin-note">Post updates/posters, add services, or update location.</p>
+            <p class="admin-note">Post updates/posters or add services.</p>
             
             <div class="admin-grid">
                 <!-- Form 1: Add Update -->
@@ -146,12 +155,12 @@
         </div>
     </section>
 
-    <!-- Location & Map Section -->
+    <!-- Location & Map Section with Exact Plus Code Location -->
     <section id="location" class="location-section reveal">
         <div class="container">
             <div class="section-title">
                 <h2><i class="fa-solid fa-map-pin"></i> Visit Our Shop</h2>
-                <p>Ferozwala Street No 1 Near Sardar Bibi Hospital</p>
+                <p>M73J+7RX Geo Net Cafe, Peoples Colony Ferozewala</p>
             </div>
 
             <div class="location-wrapper">
@@ -159,13 +168,17 @@
                     <div class="loc-badge"><i class="fa-solid fa-store"></i> Open Now</div>
                     <h3>Geo Net Cafe</h3>
                     <p class="owner-name"><i class="fa-solid fa-user-tie"></i> Proprietor: <strong>Muhammad Nadeem</strong></p>
-                    <p class="address-line"><i class="fa-solid fa-location-dot"></i> <strong>Ferozwala Street No 1 Near Sardar Bibi Hospital</strong></p>
+                    <p class="address-line"><i class="fa-solid fa-location-dot"></i> <strong>M73J+7RX Geo Net Cafe, Peoples Colony, Ferozewala</strong></p>
                     <p class="contact-line"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <strong>0314-4409322</strong></p>
                     <p class="contact-line"><i class="fa-solid fa-phone"></i> Phone 2: <strong>0300-4119322</strong></p>
 
+                    <!-- Maps & Directions Buttons -->
                     <div class="map-actions">
-                        <a id="directMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=Ferozwala+Street+No+1+Near+Sardar+Bibi+Hospital" target="_blank" class="btn-direction">
+                        <a id="directMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala" target="_blank" class="btn-direction">
                             <i class="fa-solid fa-diamond-turn-right"></i> Get Live Map Directions
+                        </a>
+                        <a id="openMapPinBtn" href="https://www.google.com/maps/search/?api=1&query=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala" target="_blank" class="btn-outline-map">
+                            <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
                         </a>
                         <a href="https://wa.me/923144409322" target="_blank" class="btn-whatsapp-chat">
                             <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (0314-4409322)
@@ -176,7 +189,7 @@
                 <div class="map-frame">
                     <iframe 
                         id="googleMapIframe"
-                        src="https://maps.google.com/maps?q=Ferozwala+Street+No+1+Near+Sardar+Bibi+Hospital&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        src="https://maps.google.com/maps?q=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                         allowfullscreen="" 
                         loading="lazy">
                     </iframe>
