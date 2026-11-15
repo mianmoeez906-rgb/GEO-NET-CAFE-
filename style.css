@@ -53,8 +53,6 @@ header {
     display: flex;
     align-items: center;
     gap: 12px;
-    cursor: pointer;
-    user-select: none;
 }
 
 .logo i {
@@ -77,7 +75,7 @@ header {
 nav {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
@@ -89,6 +87,25 @@ nav a {
 
 nav a:hover {
     color: var(--rose-soft);
+}
+
+.nav-admin-btn {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--rose-soft);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.3s;
+}
+
+.nav-admin-btn:hover {
+    background-color: var(--rose-soft);
+    color: var(--maroon-deep);
 }
 
 .nav-whatsapp {
