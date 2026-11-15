@@ -1,9 +1,9 @@
-/* Color Palette from Your New Image (#6E1B3E, #9A4C6E, #C78A9F, #F3E5E0) */
+/* (Color Palette: #6E1B3E, #9A4C6E, #C78A9F, #F3E5E0) */
 :root {
-    --maroon-deep: #6E1B3E;    /* Deep Maroon Primary */
-    --mauve-mid: #9A4C6E;      /* Medium Mauve */
-    --rose-soft: #C78A9F;      /* Soft Rose Accent */
-    --cream-bg: #F3E5E0;       /* Warm Cream Background */
+    --maroon-deep: #6E1B3E;
+    --mauve-mid: #9A4C6E;
+    --rose-soft: #C78A9F;
+    --cream-bg: #F3E5E0;
     --card-bg: #FFFFFF;
     --text-dark: #2B1622;
     --text-muted: #6B4E5D;
@@ -224,31 +224,43 @@ nav a:hover {
     flex: 0 0 340px;
 }
 
-.floating-box {
+.shop-photo-card {
     background-color: var(--card-bg);
     border: 2px solid var(--rose-soft);
-    padding: 30px;
+    padding: 20px;
     border-radius: 16px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(110, 27, 62, 0.25);
     animation: floatAnim 4s ease-in-out infinite;
+    overflow: hidden;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.floating-box i {
-    font-size: 3rem;
+.shop-photo-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.shop-photo-card i {
+    font-size: 2.8rem;
     color: var(--maroon-deep);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.floating-box h4 {
-    font-size: 1.4rem;
+.shop-photo-card h4 {
+    font-size: 1.3rem;
     color: var(--maroon-deep);
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
-.floating-box p {
+.shop-photo-card p {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 /* Owner Admin Panel */
@@ -547,7 +559,7 @@ nav a:hover {
     color: var(--text-muted);
 }
 
-/* Location Section */
+/* Location Section with Visible Buttons */
 .location-section {
     padding: 65px 0;
     background-color: rgba(199, 138, 159, 0.12);
@@ -629,6 +641,26 @@ nav a:hover {
 
 .btn-direction:hover {
     background-color: var(--mauve-mid);
+}
+
+.btn-outline-map {
+    background-color: transparent;
+    border: 2px solid var(--maroon-deep);
+    color: var(--maroon-deep);
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.btn-outline-map:hover {
+    background-color: var(--cream-bg);
 }
 
 .btn-whatsapp-chat {
@@ -743,15 +775,6 @@ footer {
 
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-animate {
-    animation: fadeUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(25px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
