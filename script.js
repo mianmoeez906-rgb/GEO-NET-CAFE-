@@ -74,11 +74,10 @@ const defaultUpdates = [
     }
 ];
 
-// Using version 10 keys to prevent any old corrupted/empty localStorage caching
-let storedServices = JSON.parse(localStorage.getItem('geoCafeServicesV10'));
+let storedServices = JSON.parse(localStorage.getItem('geoCafeServicesV11'));
 let services = (storedServices && storedServices.length > 0) ? storedServices : defaultServices;
 
-let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV10'));
+let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV11'));
 let updates = (storedUpdates && storedUpdates.length > 0) ? storedUpdates : defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
@@ -162,29 +161,13 @@ function openSecretAdmin() {
     }
 }
 
-// Logo par 3 baar click karne se Admin Panel khule ga
-let logoClicks = 0;
-let clickTimer;
-const logoElement = document.getElementById('secretLogoTrigger');
-if (logoElement) {
-    logoElement.addEventListener('click', () => {
-        logoClicks++;
-        clearTimeout(clickTimer);
-        if (logoClicks === 3) {
-            openSecretAdmin();
-            logoClicks = 0;
-        }
-        clickTimer = setTimeout(() => { logoClicks = 0; }, 800);
+// Owner Login Button Click Handler
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+if (adminLoginBtn) {
+    adminLoginBtn.addEventListener('click', () => {
+        openSecretAdmin();
     });
 }
-
-// Ctrl + Shift + A shortcut
-document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
-        e.preventDefault();
-        openSecretAdmin();
-    }
-});
 
 const closeAdminBtn = document.getElementById('closeAdminBtn');
 if(closeAdminBtn) {
@@ -207,7 +190,7 @@ if (addUpdateForm) {
         const image = customImage || createUpdatePosterGraphic(title, category);
 
         updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
-        localStorage.setItem('geoCafeUpdatesV10', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV11', JSON.stringify(updates));
         renderUpdates();
         e.target.reset();
         alert("New job/update poster published successfully!");
@@ -226,7 +209,7 @@ if (addServiceForm) {
         const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
         services.push({ id: Date.now(), title, icon, image, desc });
-        localStorage.setItem('geoCafeServicesV10', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV11', JSON.stringify(services));
         renderServices();
         e.target.reset();
         alert("New service added successfully!");
@@ -236,7 +219,7 @@ if (addServiceForm) {
 window.deleteUpdate = function(id) {
     if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdatesV10', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV11', JSON.stringify(updates));
         renderUpdates();
     }
 };
@@ -244,7 +227,7 @@ window.deleteUpdate = function(id) {
 window.deleteService = function(id) {
     if (confirm("Delete this service?")) {
         services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServicesV10', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV11', JSON.stringify(services));
         renderServices();
     }
 };
