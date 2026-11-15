@@ -74,14 +74,19 @@ const defaultUpdates = [
     }
 ];
 
-let services = JSON.parse(localStorage.getItem('geoCafeServicesV9')) || defaultServices;
-let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV9')) || defaultUpdates;
+// Using version 10 keys to prevent any old corrupted/empty localStorage caching
+let storedServices = JSON.parse(localStorage.getItem('geoCafeServicesV10'));
+let services = (storedServices && storedServices.length > 0) ? storedServices : defaultServices;
+
+let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV10'));
+let updates = (storedUpdates && storedUpdates.length > 0) ? storedUpdates : defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
 const servicesContainer = document.getElementById('servicesContainer');
 const updatesContainer = document.getElementById('updatesContainer');
 
 function renderUpdates() {
+    if (!updatesContainer) return;
     updatesContainer.innerHTML = '';
     updates.forEach(item => {
         const posterImg = item.image || createUpdatePosterGraphic(item.title, item.category);
@@ -109,6 +114,7 @@ function renderUpdates() {
 }
 
 function renderServices() {
+    if (!servicesContainer) return;
     servicesContainer.innerHTML = '';
     services.forEach(service => {
         const imgSrc = service.image || createServiceGraphic(service.title.toUpperCase(), "Geo Net Cafe Service Sample");
@@ -139,18 +145,20 @@ const OWNER_PASSWORD = "Pakistan@1122";
 // -----------------------------------------------------------------
 
 function openSecretAdmin() {
-    if (adminSection.classList.contains('hidden')) {
-        const pin = prompt("Enter Owner Secret Password:");
-        if (pin === Pakistan@1122) {
-            adminSection.classList.remove('hidden');
-            document.body.classList.add('admin-mode');
-            adminSection.scrollIntoView({ behavior: 'smooth' });
-        } else if (pin !== null) {
-            alert("Incorrect Password!");
+    if (adminSection) {
+        if (adminSection.classList.contains('hidden')) {
+            const pin = prompt("Enter Owner Secret Password:");
+            if (pin === Pakistan@1122) {
+                adminSection.classList.remove('hidden');
+                document.body.classList.add('admin-mode');
+                adminSection.scrollIntoView({ behavior: 'smooth' });
+            } else if (pin !== null) {
+                alert("Incorrect Password!");
+            }
+        } else {
+            adminSection.classList.add('hidden');
+            document.body.classList.remove('admin-mode');
         }
-    } else {
-        adminSection.classList.add('hidden');
-        document.body.classList.remove('admin-mode');
     }
 }
 
@@ -186,43 +194,49 @@ if(closeAdminBtn) {
     });
 }
 
-document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const title = document.getElementById('updateTitle').value.trim();
-    const category = document.getElementById('updateCategory').value;
-    const customImage = document.getElementById('updateImage').value.trim();
-    const desc = document.getElementById('updateDesc').value.trim();
-    const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const addUpdateForm = document.getElementById('addUpdateForm');
+if (addUpdateForm) {
+    addUpdateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('updateTitle').value.trim();
+        const category = document.getElementById('updateCategory').value;
+        const customImage = document.getElementById('updateImage').value.trim();
+        const desc = document.getElementById('updateDesc').value.trim();
+        const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
-    const image = customImage || createUpdatePosterGraphic(title, category);
+        const image = customImage || createUpdatePosterGraphic(title, category);
 
-    updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
-    localStorage.setItem('geoCafeUpdatesV9', JSON.stringify(updates));
-    renderUpdates();
-    e.target.reset();
-    alert("New job/update poster published successfully!");
-});
+        updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
+        localStorage.setItem('geoCafeUpdatesV10', JSON.stringify(updates));
+        renderUpdates();
+        e.target.reset();
+        alert("New job/update poster published successfully!");
+    });
+}
 
-document.getElementById('addServiceForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const title = document.getElementById('serviceTitle').value.trim();
-    const customImage = document.getElementById('serviceImage').value.trim();
-    const icon = document.getElementById('serviceIcon').value;
-    const desc = document.getElementById('serviceDesc').value.trim();
+const addServiceForm = document.getElementById('addServiceForm');
+if (addServiceForm) {
+    addServiceForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('serviceTitle').value.trim();
+        const customImage = document.getElementById('serviceImage').value.trim();
+        const icon = document.getElementById('serviceIcon').value;
+        const desc = document.getElementById('serviceDesc').value.trim();
 
-    const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
+        const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
-    services.push({ id: Date.now(), title, icon, image, desc });
-    localStorage.setItem('geoCafeServicesV9', JSON.stringify(services));
-    renderServices();
-    e.target.reset();
-    alert("New service added successfully!");
-});
+        services.push({ id: Date.now(), title, icon, image, desc });
+        localStorage.setItem('geoCafeServicesV10', JSON.stringify(services));
+        renderServices();
+        e.target.reset();
+        alert("New service added successfully!");
+    });
+}
 
 window.deleteUpdate = function(id) {
     if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdatesV9', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV10', JSON.stringify(updates));
         renderUpdates();
     }
 };
@@ -230,10 +244,11 @@ window.deleteUpdate = function(id) {
 window.deleteService = function(id) {
     if (confirm("Delete this service?")) {
         services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServicesV9', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV10', JSON.stringify(services));
         renderServices();
     }
 };
 
+// Initial Render on Load
 renderUpdates();
 renderServices();
