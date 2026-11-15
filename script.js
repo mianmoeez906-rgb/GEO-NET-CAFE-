@@ -34,7 +34,6 @@ function createServiceGraphic(label, sublabel) {
     return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
 }
 
-// Default Complete Services
 const defaultServices = [
     { id: 1, title: "E-Stamp Paper Issuance", icon: "fa-stamp", image: createServiceGraphic("GOVT E-STAMP PAPER", "Official Stamp Papers Issued Instantly"), desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
     { id: 2, title: "Biometric Verification", icon: "fa-fingerprint", image: createServiceGraphic("BIOMETRIC VERIFICATION", "NADRA & Banking Thumb Scan Service"), desc: "Fast and accurate NADRA, SIM, and bank biometric thumb verification services." },
@@ -75,8 +74,8 @@ const defaultUpdates = [
     }
 ];
 
-let services = JSON.parse(localStorage.getItem('geoCafeServicesV6')) || defaultServices;
-let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV6')) || defaultUpdates;
+let services = JSON.parse(localStorage.getItem('geoCafeServicesV7')) || defaultServices;
+let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV7')) || defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
 const servicesContainer = document.getElementById('servicesContainer');
@@ -155,7 +154,6 @@ function openSecretAdmin() {
     }
 }
 
-// Logo par 3 baar click karne se Admin Panel khule ga
 let logoClicks = 0;
 let clickTimer;
 const logoElement = document.querySelector('.logo');
@@ -167,11 +165,10 @@ if (logoElement) {
             openSecretAdmin();
             logoClicks = 0;
         }
-        clickTimer = setTimeout(() => { logoClicks = 0; }, 800);
+        clickTimer = setTimeout(() => { logoClicks5 = 0; }, 800);
     });
 }
 
-// Ctrl + Shift + A shortcut
 document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
         e.preventDefault();
@@ -198,7 +195,7 @@ document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
     const image = customImage || createUpdatePosterGraphic(title, category);
 
     updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
-    localStorage.setItem('geoCafeUpdatesV6', JSON.stringify(updates));
+    localStorage.setItem('geoCafeUpdatesV7', JSON.stringify(updates));
     renderUpdates();
     e.target.reset();
     alert("New job/update poster published successfully!");
@@ -214,7 +211,7 @@ document.getElementById('addServiceForm').addEventListener('submit', (e) => {
     const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
     services.push({ id: Date.now(), title, icon, image, desc });
-    localStorage.setItem('geoCafeServicesV6', JSON.stringify(services));
+    localStorage.setItem('geoCafeServicesV7', JSON.stringify(services));
     renderServices();
     e.target.reset();
     alert("New service added successfully!");
@@ -223,7 +220,7 @@ document.getElementById('addServiceForm').addEventListener('submit', (e) => {
 window.deleteUpdate = function(id) {
     if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdatesV6', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV7', JSON.stringify(updates));
         renderUpdates();
     }
 };
@@ -231,7 +228,7 @@ window.deleteUpdate = function(id) {
 window.deleteService = function(id) {
     if (confirm("Delete this service?")) {
         services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServicesV6', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV7', JSON.stringify(services));
         renderServices();
     }
 };
