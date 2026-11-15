@@ -1,74 +1,62 @@
-// Default Initial Services Requested for Geo Net Cafe
+// Helper for generating default update poster banner graphics if owner doesn't provide a custom poster link
+function createUpdatePosterGraphic(title, category) {
+    const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
+        <defs>
+            <linearGradient id="upGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1A1A1A"/>
+                <stop offset="100%" stop-color="#2D200B"/>
+            </linearGradient>
+        </defs>
+        <rect width="600" height="340" fill="url(#upGrad)"/>
+        <rect x="25" y="25" width="550" height="290" rx="12" fill="rgba(255,159,10,0.08)" stroke="#FF9F0A" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="300" y="80" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#FF9F0A" text-anchor="middle">★ GEO NET CAFE OFFICIAL UPDATE ★</text>
+        <text x="300" y="150" font-family="Segoe UI, sans-serif" font-size="26" font-weight="bold" fill="#FFFFFF" text-anchor="middle">${title.toUpperCase()}</text>
+        <text x="300" y="200" font-family="Segoe UI, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">Category: ${category}</text>
+        <text x="300" y="260" font-family="Segoe UI, sans-serif" font-size="14" fill="#FF9F0A" text-anchor="middle">Visit shop or click WhatsApp to apply online!</text>
+    </svg>`;
+    return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+}
+
+function createServiceGraphic(label, sublabel) {
+    const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
+        <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1E1E1E"/>
+                <stop offset="100%" stop-color="#2C2C2C"/>
+            </linearGradient>
+        </defs>
+        <rect width="600" height="340" fill="url(#g)"/>
+        <rect x="35" y="35" width="530" height="270" rx="14" fill="rgba(255,159,10,0.06)" stroke="#FF9F0A" stroke-width="2" stroke-dasharray="8 6"/>
+        <text x="300" y="150" font-family="Segoe UI, sans-serif" font-size="28" font-weight="bold" fill="#FF9F0A" text-anchor="middle">${label}</text>
+        <text x="300" y="195" font-family="Segoe UI, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">${sublabel}</text>
+    </svg>`;
+    return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+}
+
+// Default Services
 const defaultServices = [
-    {
-        id: 1,
-        title: "E-Stamp Paper Issuance",
-        icon: "fa-stamp",
-        desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation."
-    },
-    {
-        id: 2,
-        title: "Biometric Verification",
-        icon: "fa-fingerprint",
-        desc: "Fast and accurate NADRA & bank biometric thumb verification services."
-    },
-    {
-        id: 3,
-        title: "Duplicate PVC Card Printing",
-        icon: "fa-id-card",
-        desc: "High-quality, durable duplicate PVC card printing for ID cards, licenses, and official cards."
-    },
-    {
-        id: 4,
-        title: "Driving Learner License Apply",
-        icon: "fa-car-side",
-        desc: "Complete online registration and fee processing for new driving learner permits."
-    },
-    {
-        id: 5,
-        title: "New Govt Jobs & Online Schemes",
-        icon: "fa-laptop-file",
-        desc: "Online application submission for all latest government jobs, PPSC, FPSC, and public welfare schemes."
-    },
-    {
-        id: 6,
-        title: "Lahore Board Admissions & Results",
-        icon: "fa-graduation-cap",
-        desc: "BISE Lahore matric & inter online admission forms submission and instant result card printing."
-    },
-    {
-        id: 7,
-        title: "Urgent Passport Size Photos",
-        icon: "fa-camera",
-        desc: "High-resolution studio passport size photographs printed in minutes with blue or white backgrounds."
-    },
-    {
-        id: 8,
-        title: "A4 Size Photo Frames",
-        icon: "fa-image",
-        desc: "Elegant A4 size frames available for certificates, degrees, portraits, and memorable photos."
-    },
-    {
-        id: 9,
-        title: "Custom Number Plates",
-        icon: "fa-car",
-        desc: "Standard and stylish number plates made to order for bikes, cars, and commercial vehicles."
-    },
-    {
-        id: 10,
-        title: "Complete Stationery Store",
-        icon: "fa-pen-ruler",
-        desc: "All school, college, and office stationery items, files, registers, and forms available."
-    }
+    { id: 1, title: "E-Stamp Paper Issuance", icon: "fa-stamp", image: createServiceGraphic("GOVT E-STAMP PAPER", "Official Stamp Papers Issued Instantly"), desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
+    { id: 2, title: "Biometric Verification", icon: "fa-fingerprint", image: createServiceGraphic("BIOMETRIC VERIFICATION", "NADRA & Banking Thumb Scan Service"), desc: "Fast and accurate NADRA, SIM, and bank biometric thumb verification services." },
+    { id: 3, title: "Duplicate PVC Card Printing", icon: "fa-id-card", image: createServiceGraphic("DUPLICATE PVC CARD", "High-Durability Smart ID & License Card"), desc: "High-quality, waterproof duplicate PVC card printing for ID cards, driving licenses, and official cards." },
+    { id: 4, title: "Driving Learner License Apply", icon: "fa-car-side", image: createServiceGraphic("LEARNER PERMIT APPLY", "Online Driving License Registration"), desc: "Complete online registration and fee processing for new bike & car driving learner permits." },
+    { id: 5, title: "New Govt Jobs & Schemes", icon: "fa-laptop-file", image: createServiceGraphic("GOVT JOBS & SCHEMES", "PPSC • FPSC • Punjab Welfare Portals"), desc: "Online application submission for all latest government jobs and public welfare schemes." },
+    { id: 6, title: "Lahore Board Admissions & Results", icon: "fa-graduation-cap", image: createServiceGraphic("BISE LAHORE BOARD", "Online Admission Forms & Result Cards"), desc: "Lahore Board matric & intermediate online admission forms submission and instant result card printing." },
+    { id: 7, title: "Urgent Passport Size Photos", icon: "fa-camera", image: createServiceGraphic("PASSPORT SIZE PHOTOS", "Blue & White Background Studio Print"), desc: "High-resolution studio passport size photographs printed in minutes for visas, jobs, and admissions." },
+    { id: 8, title: "A4 Size Photo Frames", icon: "fa-image", image: createServiceGraphic("A4 SIZE WALL FRAMES", "Certificate, Degree & Portrait Framing"), desc: "Elegant A4 size frames available for certificates, degrees, portraits, and memorable photos." },
+    { id: 9, title: "Custom Number Plates", icon: "fa-car", image: createServiceGraphic("VEHICLE NUMBER PLATES", "Bike & Car Embossed / Stylish Plates"), desc: "Standard and stylish number plates made to order for motorcycles, cars, and commercial vehicles." },
+    { id: 10, title: "Complete Stationery Store", icon: "fa-pen-ruler", image: createServiceGraphic("OFFICE & SCHOOL STATIONERY", "Files, Registers, Pens & Forms"), desc: "All school, college, and office stationery items, files, registers, and application forms available." }
 ];
 
-// Default Initial Daily Updates
+// Default Initial Updates with Poster Banners
 const defaultUpdates = [
     {
         id: 101,
         title: "Latest Government Jobs Applications Open",
         category: "Govt Jobs",
         date: "Updated Today",
+        image: createUpdatePosterGraphic("Latest Government Jobs Open", "Govt Jobs"),
         desc: "Visit Geo Net Cafe with your CNIC, educational certificates, and passport size photos to apply online before the closing date."
     },
     {
@@ -76,6 +64,7 @@ const defaultUpdates = [
         title: "BISE Lahore Board Admissions & Result Cards",
         category: "Board & Results",
         date: "Active Notice",
+        image: createUpdatePosterGraphic("Lahore Board Admissions", "Board & Results"),
         desc: "Online admission forms for Lahore Board and official result card printouts are available at our counter."
     },
     {
@@ -83,13 +72,20 @@ const defaultUpdates = [
         title: "Instant E-Stamp & Driving Learner Permits",
         category: "Online Scheme",
         date: "Daily Service",
+        image: createUpdatePosterGraphic("Instant E-Stamp & Learner Permit", "Online Scheme"),
         desc: "Get your E-Stamp papers and online driving learner license registered within minutes without waiting in long queues."
     }
 ];
 
-// Load from LocalStorage or use Defaults
-let services = JSON.parse(localStorage.getItem('geoCafeServices')) || defaultServices;
-let updates = JSON.parse(localStorage.getItem('geoCafeUpdates')) || defaultUpdates;
+const defaultLocation = {
+    address: "Main Bazar Road, Ferozewala, Punjab, Pakistan",
+    mapQuery: "Geo Net Cafe Ferozewala Punjab Pakistan"
+};
+
+// LocalStorage
+let services = JSON.parse(localStorage.getItem('geoCafeServicesV4')) || defaultServices;
+let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV4')) || defaultUpdates;
+let shopLocation = JSON.parse(localStorage.getItem('geoCafeLocationV4')) || defaultLocation;
 
 // DOM Elements
 const servicesContainer = document.getElementById('servicesContainer');
@@ -97,55 +93,81 @@ const updatesContainer = document.getElementById('updatesContainer');
 const adminToggleBtn = document.getElementById('adminToggleBtn');
 const closeAdminBtn = document.getElementById('closeAdminBtn');
 const adminSection = document.getElementById('adminSection');
-const addUpdateForm = document.getElementById('addUpdateForm');
-const addServiceForm = document.getElementById('addServiceForm');
 
-// Render Daily Updates
+function renderLocation() {
+    const encodedQuery = encodeURIComponent(shopLocation.mapQuery);
+    const directionURL = `https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`;
+    const embedURL = `https://maps.google.com/maps?q=${encodedQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+
+    document.getElementById('displayShopAddress').textContent = shopLocation.address;
+    document.getElementById('googleMapIframe').src = embedURL;
+    document.getElementById('directMapBtn').href = directionURL;
+
+    document.getElementById('shopAddressInput').value = shopLocation.address;
+    document.getElementById('mapQueryInput').value = shopLocation.mapQuery;
+}
+
+// Render Updates as Poster Cards
 function renderUpdates() {
     updatesContainer.innerHTML = '';
     updates.forEach(item => {
+        const posterImg = item.image || createUpdatePosterGraphic(item.title, item.category);
         const card = document.createElement('div');
         card.className = 'update-card';
         card.innerHTML = `
             <button class="delete-btn" onclick="deleteUpdate(${item.id})">Delete</button>
-            <div class="update-meta">
-                <span class="badge">${item.category}</span>
-                <span class="update-date"><i class="fa-regular fa-clock"></i> ${item.date}</span>
+            <div class="update-poster-wrapper">
+                <img src="${posterImg}" alt="${item.title} Poster">
             </div>
-            <h3>${item.title}</h3>
-            <p>${item.desc}</p>
+            <div class="update-body">
+                <div class="update-meta">
+                    <span class="badge">${item.category}</span>
+                    <span class="update-date"><i class="fa-regular fa-clock"></i> ${item.date}</span>
+                </div>
+                <h3>${item.title}</h3>
+                <p>${item.desc}</p>
+                <a href="https://wa.me/923144409322?text=Hi%20Muhammad%20Nadeem,%20I%20want%20to%20apply%20for:%20${encodeURIComponent(item.title)}" target="_blank" class="btn-update-action">
+                    <i class="fa-brands fa-whatsapp"></i> Apply via WhatsApp
+                </a>
+            </div>
         `;
         updatesContainer.appendChild(card);
     });
 }
 
-// Render Shop Services
 function renderServices() {
     servicesContainer.innerHTML = '';
     services.forEach(service => {
+        const imgSrc = service.image || createServiceGraphic(service.title.toUpperCase(), "Geo Net Cafe Service Sample");
         const card = document.createElement('div');
         card.className = 'service-card';
         card.innerHTML = `
             <button class="delete-btn" onclick="deleteService(${service.id})">Delete</button>
-            <div class="service-icon">
+            <div class="service-img-wrapper">
+                <img src="${imgSrc}" alt="${service.title} Sample">
+                <span class="sample-tag">Sample Preview</span>
+            </div>
+            <div class="service-icon-badge">
                 <i class="fa-solid ${service.icon}"></i>
             </div>
-            <h3>${service.title}</h3>
-            <p>${service.desc}</p>
+            <div class="service-body">
+                <h3>${service.title}</h3>
+                <p>${service.desc}</p>
+            </div>
         `;
         servicesContainer.appendChild(card);
     });
 }
 
-// Toggle Owner Admin Panel (with simple PIN protection: 1234)
+// Admin Panel Toggle
 adminToggleBtn.addEventListener('click', () => {
     if (adminSection.classList.contains('hidden')) {
-        const pin = prompt("Enter Owner PIN to manage updates & services (Default PIN: 1234):");
+        const pin = prompt("Enter Owner PIN (Default PIN: 1234):");
         if (pin === "1234") {
             adminSection.classList.remove('hidden');
             document.body.classList.add('admin-mode');
         } else if (pin !== null) {
-            alert("Incorrect PIN! Please try again.");
+            alert("Incorrect PIN!");
         }
     } else {
         adminSection.classList.add('hidden');
@@ -158,70 +180,83 @@ closeAdminBtn.addEventListener('click', () => {
     document.body.classList.remove('admin-mode');
 });
 
-// Add New Daily Update
-addUpdateForm.addEventListener('submit', (e) => {
+// Add Update with Poster
+document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('updateTitle').value.trim();
     const category = document.getElementById('updateCategory').value;
+    const customImage = document.getElementById('updateImage').value.trim();
     const desc = document.getElementById('updateDesc').value.trim();
+    const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
-    const today = new Date().toLocaleDateString('en-GB', {
-        day: 'numeric', month: 'short', year: 'numeric'
-    });
+    const image = customImage || createUpdatePosterGraphic(title, category);
 
-    const newUpdate = {
-        id: Date.now(),
-        title: title,
-        category: category,
-        date: today,
-        desc: desc
-    };
-
-    updates.unshift(newUpdate); // Add to the top of the list
-    localStorage.setItem('geoCafeUpdates', JSON.stringify(updates));
+    updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
+    localStorage.setItem('geoCafeUpdatesV4', JSON.stringify(updates));
     renderUpdates();
-    addUpdateForm.reset();
-    alert("New daily update published successfully!");
+    e.target.reset();
+    alert("New job/update poster published successfully!");
 });
 
-// Add New Service
-addServiceForm.addEventListener('submit', (e) => {
+// Add Service
+document.getElementById('addServiceForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('serviceTitle').value.trim();
+    const customImage = document.getElementById('serviceImage').value.trim();
     const icon = document.getElementById('serviceIcon').value;
     const desc = document.getElementById('serviceDesc').value.trim();
 
-    const newService = {
-        id: Date.now(),
-        title: title,
-        icon: icon,
-        desc: desc
-    };
+    const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
-    services.push(newService);
-    localStorage.setItem('geoCafeServices', JSON.stringify(services));
+    services.push({ id: Date.now(), title, icon, image, desc });
+    localStorage.setItem('geoCafeServicesV4', JSON.stringify(services));
     renderServices();
-    addServiceForm.reset();
-    alert("New service added to Geo Net Cafe!");
+    e.target.reset();
+    alert("New service added successfully!");
 });
 
-// Delete Functions for Owner
+// Update Location
+document.getElementById('updateLocationForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const address = document.getElementById('shopAddressInput').value.trim();
+    const mapQuery = document.getElementById('mapQueryInput').value.trim();
+
+    shopLocation = { address, mapQuery };
+    localStorage.setItem('geoCafeLocationV4', JSON.stringify(shopLocation));
+    renderLocation();
+    alert("Shop location updated!");
+});
+
+// Delete Functions
 window.deleteUpdate = function(id) {
-    if (confirm("Remove this update?")) {
+    if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdates', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV4', JSON.stringify(updates));
         renderUpdates();
     }
 };
 
 window.deleteService = function(id) {
-    if (confirm("Remove this service?")) {
+    if (confirm("Delete this service?")) {
         services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServices', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV4', JSON.stringify(services));
         renderServices();
     }
 };
 
-// Initial Load
+// Scroll Reveal
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.12 });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Initialize
+renderLocation();
 renderUpdates();
 renderServices();
