@@ -25,8 +25,8 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 92%;
+    max-width: 1250px;
     margin: 0 auto;
 }
 
@@ -54,6 +54,7 @@ header {
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    user-select: none;
 }
 
 .logo i {
@@ -418,14 +419,15 @@ nav a:hover {
 
 /* Services Section */
 .services-section {
-    padding: 65px 0;
+    padding: 70px 0;
     background-color: var(--cream-bg);
+    display: block !important;
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
-    gap: 25px;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 25px !important;
 }
 
 .service-card {
@@ -436,6 +438,8 @@ nav a:hover {
     border: 1px solid var(--rose-soft);
     border-bottom: 4px solid var(--maroon-deep);
     box-shadow: 0 5px 15px rgba(110, 27, 62, 0.08);
+    display: flex;
+    flex-direction: column;
 }
 
 .service-img-wrapper {
