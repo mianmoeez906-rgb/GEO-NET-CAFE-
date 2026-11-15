@@ -162,8 +162,8 @@ function renderServices() {
 // Admin Panel Toggle
 adminToggleBtn.addEventListener('click', () => {
     if (adminSection.classList.contains('hidden')) {
-        const pin = prompt("Enter Owner PIN (Default PIN: 1234):");
-        if (pin === "1234") {
+        const pin = prompt("Enter Owner PIN (Default PIN: Pakistan@1122):");
+        if (pin === "Pakistan@1122") {
             adminSection.classList.remove('hidden');
             document.body.classList.add('admin-mode');
         } else if (pin !== null) {
