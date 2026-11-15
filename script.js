@@ -1,4 +1,3 @@
-// Helper for generating update poster banners
 function createUpdatePosterGraphic(title, category) {
     const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
@@ -49,7 +48,6 @@ const defaultServices = [
     { id: 10, title: "Complete Stationery Store", icon: "fa-pen-ruler", image: createServiceGraphic("OFFICE & SCHOOL STATIONERY", "Files, Registers, Pens & Forms"), desc: "All school, college, and office stationery items, files, registers, and application forms available." }
 ];
 
-// Default Initial Updates
 const defaultUpdates = [
     {
         id: 101,
@@ -77,16 +75,13 @@ const defaultUpdates = [
     }
 ];
 
-// LocalStorage
-let services = JSON.parse(localStorage.getItem('geoCafeServicesV5')) || defaultServices;
-let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV5')) || defaultUpdates;
+let services = JSON.parse(localStorage.getItem('geoCafeServicesV6')) || defaultServices;
+let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV6')) || defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
 const servicesContainer = document.getElementById('servicesContainer');
 const updatesContainer = document.getElementById('updatesContainer');
-const closeAdminBtn = document.getElementById('closeAdminBtn');
 
-// Render Updates
 function renderUpdates() {
     updatesContainer.innerHTML = '';
     updates.forEach(item => {
@@ -114,7 +109,6 @@ function renderUpdates() {
     });
 }
 
-// Render Services
 function renderServices() {
     servicesContainer.innerHTML = '';
     services.forEach(service => {
@@ -140,12 +134,9 @@ function renderServices() {
 }
 
 // -----------------------------------------------------------------
-// SECRET ADMIN PANEL ACCESS & PASSWORD CONFIGURATION GUIDE
+// PASSWORD CONFIGURATION (Yahan apna password change kar sakte hain)
 // -----------------------------------------------------------------
-// PASSWORD KAHAN CHANGE HOTA HAI?
-// Neeche line mein `"nadeem2026"` likha hai. Isko hata kar apna marzi ka 
-// secret password likh lein (misal ke tor par `"nadeem@123"`).
-const OWNER_PASSWORD = "nadeem2026"; 
+const OWNER_PASSWORD = "Pakistan@1122"; 
 // -----------------------------------------------------------------
 
 function openSecretAdmin() {
@@ -164,7 +155,7 @@ function openSecretAdmin() {
     }
 }
 
-// Tareeqa 1: Website ke header mein "GEO NET CAFE" logo par lagatar 3 baar click karne se khule ga
+// Logo par 3 baar click karne se Admin Panel khule ga
 let logoClicks = 0;
 let clickTimer;
 const logoElement = document.querySelector('.logo');
@@ -180,7 +171,7 @@ if (logoElement) {
     });
 }
 
-// Tareeqa 2: Keyboard par Ctrl + Shift + A dabane se bhi khule ga
+// Ctrl + Shift + A shortcut
 document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
         e.preventDefault();
@@ -188,12 +179,14 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-closeAdminBtn.addEventListener('click', () => {
-    adminSection.classList.add('hidden');
-    document.body.classList.remove('admin-mode');
-});
+const closeAdminBtn = document.getElementById('closeAdminBtn');
+if(closeAdminBtn) {
+    closeAdminBtn.addEventListener('click', () => {
+        adminSection.classList.add('hidden');
+        document.body.classList.remove('admin-mode');
+    });
+}
 
-// Add Update Form
 document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('updateTitle').value.trim();
@@ -205,13 +198,12 @@ document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
     const image = customImage || createUpdatePosterGraphic(title, category);
 
     updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
-    localStorage.setItem('geoCafeUpdatesV5', JSON.stringify(updates));
+    localStorage.setItem('geoCafeUpdatesV6', JSON.stringify(updates));
     renderUpdates();
     e.target.reset();
     alert("New job/update poster published successfully!");
 });
 
-// Add Service Form
 document.getElementById('addServiceForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('serviceTitle').value.trim();
@@ -222,7 +214,7 @@ document.getElementById('addServiceForm').addEventListener('submit', (e) => {
     const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
     services.push({ id: Date.now(), title, icon, image, desc });
-    localStorage.setItem('geoCafeServicesV5', JSON.stringify(services));
+    localStorage.setItem('geoCafeServicesV6', JSON.stringify(services));
     renderServices();
     e.target.reset();
     alert("New service added successfully!");
@@ -231,7 +223,7 @@ document.getElementById('addServiceForm').addEventListener('submit', (e) => {
 window.deleteUpdate = function(id) {
     if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdatesV5', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV6', JSON.stringify(updates));
         renderUpdates();
     }
 };
@@ -239,23 +231,10 @@ window.deleteUpdate = function(id) {
 window.deleteService = function(id) {
     if (confirm("Delete this service?")) {
         services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServicesV5', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV6', JSON.stringify(services));
         renderServices();
     }
 };
 
-// Scroll Reveal
-const revealElements = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.12 });
-
-revealElements.forEach(el => revealObserver.observe(el));
-
-// Initialize
 renderUpdates();
 renderServices();
