@@ -30,7 +30,7 @@
         </div>
     </header>
 
-    <!-- Hero Section with Shop Picture Option -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content-wrapper">
             <div class="hero-text hero-animate">
@@ -45,17 +45,8 @@
                 </div>
             </div>
             <div class="hero-card-visual">
-                <!-- 
-                  =========================================================
-                  SHOP PICTURE CUSTOMIZATION (Line 54 qareeb):
-                  Agar aap yahan apni shop ki real picture lagana chahte hain, 
-                  toh 'src' mein apni image ka link ya file name (jaise 'shop.jpg') 
-                  likh dein. Agar image na ho toh default icon show hoga.
-                  =========================================================
-                -->
                 <div class="shop-photo-card">
-                    <img src="" alt="Geo Net Cafe Shop Photo" id="shopRealPhoto" onerror="this.style.display='none'; document.getElementById('fallbackShopIcon').style.display='block';">
-                    <div id="fallbackShopIcon" style="display:block;">
+                    <div id="fallbackShopIcon">
                         <i class="fa-solid fa-store"></i>
                         <h4>Geo Net Cafe</h4>
                         <p>Peoples Colony, Ferozewala</p>
@@ -134,7 +125,7 @@
     </section>
 
     <!-- Daily Updates Section -->
-    <section id="updates" class="updates-section reveal">
+    <section id="updates" class="updates-section">
         <div class="container">
             <div class="section-title">
                 <h2><i class="fa-solid fa-bell"></i> Daily Updates & Job Posters</h2>
@@ -144,8 +135,8 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section reveal">
+    <!-- Services Section (Fixed to show all services clearly) -->
+    <section id="services" class="services-section">
         <div class="container">
             <div class="section-title">
                 <h2><i class="fa-solid fa-briefcase"></i> Our Complete Services</h2>
@@ -155,8 +146,8 @@
         </div>
     </section>
 
-    <!-- Location & Map Section with Exact Plus Code Location -->
-    <section id="location" class="location-section reveal">
+    <!-- Location & Map Section -->
+    <section id="location" class="location-section">
         <div class="container">
             <div class="section-title">
                 <h2><i class="fa-solid fa-map-pin"></i> Visit Our Shop</h2>
@@ -172,7 +163,6 @@
                     <p class="contact-line"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <strong>0314-4409322</strong></p>
                     <p class="contact-line"><i class="fa-solid fa-phone"></i> Phone 2: <strong>0300-4119322</strong></p>
 
-                    <!-- Maps & Directions Buttons -->
                     <div class="map-actions">
                         <a id="directMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala" target="_blank" class="btn-direction">
                             <i class="fa-solid fa-diamond-turn-right"></i> Get Live Map Directions
