@@ -35,7 +35,7 @@ function createServiceGraphic(label, sublabel) {
 }
 
 const defaultServices = [
-    { id: 1, title: "E-Stamp Paper Issuance", icon: "fa-stamp", image: createServiceGraphic("GOVT E-STAMP PAPER", "Official Stamp Papers Issued Instantly"), desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
+    { id: 1, title: "Official E-Stamp Papers", icon: "fa-stamp", image: createServiceGraphic("GOVT E-STAMP PAPER", "Official Stamp Papers Issued Instantly"), desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
     { id: 2, title: "Biometric Verification", icon: "fa-fingerprint", image: createServiceGraphic("BIOMETRIC VERIFICATION", "NADRA & Banking Thumb Scan Service"), desc: "Fast and accurate NADRA, SIM, and bank biometric thumb verification services." },
     { id: 3, title: "Duplicate PVC Card Printing", icon: "fa-id-card", image: createServiceGraphic("DUPLICATE PVC CARD", "High-Durability Smart ID & License Card"), desc: "High-quality, waterproof duplicate PVC card printing for ID cards, driving licenses, and official cards." },
     { id: 4, title: "Driving Learner License Apply", icon: "fa-car-side", image: createServiceGraphic("LEARNER PERMIT APPLY", "Online Driving License Registration"), desc: "Complete online registration and fee processing for new bike & car driving learner permits." },
@@ -74,8 +74,8 @@ const defaultUpdates = [
     }
 ];
 
-let services = JSON.parse(localStorage.getItem('geoCafeServicesV7')) || defaultServices;
-let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV7')) || defaultUpdates;
+let services = JSON.parse(localStorage.getItem('geoCafeServicesV9')) || defaultServices;
+let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV9')) || defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
 const servicesContainer = document.getElementById('servicesContainer');
@@ -154,9 +154,10 @@ function openSecretAdmin() {
     }
 }
 
+// Logo par 3 baar click karne se Admin Panel khule ga
 let logoClicks = 0;
 let clickTimer;
-const logoElement = document.querySelector('.logo');
+const logoElement = document.getElementById('secretLogoTrigger');
 if (logoElement) {
     logoElement.addEventListener('click', () => {
         logoClicks++;
@@ -165,10 +166,11 @@ if (logoElement) {
             openSecretAdmin();
             logoClicks = 0;
         }
-        clickTimer = setTimeout(() => { logoClicks5 = 0; }, 800);
+        clickTimer = setTimeout(() => { logoClicks = 0; }, 800);
     });
 }
 
+// Ctrl + Shift + A shortcut
 document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
         e.preventDefault();
@@ -195,7 +197,7 @@ document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
     const image = customImage || createUpdatePosterGraphic(title, category);
 
     updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
-    localStorage.setItem('geoCafeUpdatesV7', JSON.stringify(updates));
+    localStorage.setItem('geoCafeUpdatesV9', JSON.stringify(updates));
     renderUpdates();
     e.target.reset();
     alert("New job/update poster published successfully!");
@@ -211,7 +213,7 @@ document.getElementById('addServiceForm').addEventListener('submit', (e) => {
     const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
     services.push({ id: Date.now(), title, icon, image, desc });
-    localStorage.setItem('geoCafeServicesV7', JSON.stringify(services));
+    localStorage.setItem('geoCafeServicesV9', JSON.stringify(services));
     renderServices();
     e.target.reset();
     alert("New service added successfully!");
@@ -220,7 +222,7 @@ document.getElementById('addServiceForm').addEventListener('submit', (e) => {
 window.deleteUpdate = function(id) {
     if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdatesV7', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV9', JSON.stringify(updates));
         renderUpdates();
     }
 };
@@ -228,7 +230,7 @@ window.deleteUpdate = function(id) {
 window.deleteService = function(id) {
     if (confirm("Delete this service?")) {
         services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServicesV7', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV9', JSON.stringify(services));
         renderServices();
     }
 };
