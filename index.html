@@ -12,14 +12,21 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container nav-container">
-            <div class="logo">
+            <div class="logo" title="Click 3 times to open Secret Admin Panel">
                 <i class="fa-solid fa-globe"></i>
                 <div>
                     <h1>GEO NET CAFE</h1>
                     <span>Proprietor: Muhammad Nadeem</span>
                 </div>
             </div>
-
+            <nav>
+                <a href="#updates">Daily Updates</a>
+                <a href="#services">Services</a>
+                <a href="#location">Map & Location</a>
+                <a href="https://wa.me/923144409322" target="_blank" class="nav-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> 0314-4409322
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -31,7 +38,7 @@
                 <h2>THE BEST <span class="highlight">DIGITAL & NET CAFE</span> IN TOWN</h2>
                 <p>Official E-Stamp papers, Biometric verification, Duplicate PVC cards, Driving learner license, Govt job applications, Lahore Board admissions & studio printing.</p>
                 <div class="hero-buttons">
-                    <a href="#updates" class="btn-primary">View Latest Job Posters</a>
+                    <a href="#services" class="btn-primary">Explore All Services</a>
                     <a href="https://wa.me/923144409322" target="_blank" class="btn-whatsapp-hero">
                         <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
                     </a>
@@ -50,22 +57,22 @@
         </div>
     </section>
 
-    <!-- Owner Admin Panel -->
+    <!-- Secret Owner Admin Panel (Hidden from Users) -->
     <section id="adminSection" class="admin-panel hidden">
         <div class="container">
             <div class="admin-header">
                 <h3><i class="fa-solid fa-sliders"></i> Shop Owner Control Panel (Muhammad Nadeem)</h3>
                 <button id="closeAdminBtn" class="btn-close">&times;</button>
             </div>
-            <p class="admin-note">Post daily updates as a poster/banner image, add services, or update your map location.</p>
+            <p class="admin-note">Post updates/posters, add services, or update location.</p>
             
             <div class="admin-grid">
-                <!-- Form 1: Add Daily Update / Poster -->
+                <!-- Form 1: Add Update -->
                 <div class="admin-card">
-                    <h4><i class="fa-solid fa-image"></i> Post Update Poster / Banner</h4>
+                    <h4><i class="fa-solid fa-bullhorn"></i> Post Daily Update Poster</h4>
                     <form id="addUpdateForm">
                         <label>Update Title / Job Name</label>
-                        <input type="text" id="updateTitle" placeholder="e.g., Punjab Police Jobs 2026" required>
+                        <input type="text" id="updateTitle" placeholder="e.g., Punjab Police Jobs" required>
                         
                         <label>Category</label>
                         <select id="updateCategory">
@@ -75,26 +82,25 @@
                             <option value="Shop Notice">Shop Notice</option>
                         </select>
 
-                        <label>Poster / Banner Image Link (URL)</label>
-                        <input type="url" id="updateImage" placeholder="Paste poster image link (optional)">
-                        <small class="hint-text">If left blank, a professional text banner poster will be created automatically.</small>
+                        <label>Poster Image Link (URL)</label>
+                        <input type="url" id="updateImage" placeholder="Paste image link (optional)">
 
-                        <label>Details / Last Date</label>
+                        <label>Details / Requirements</label>
                         <textarea id="updateDesc" rows="3" placeholder="Enter last date or requirements..." required></textarea>
                         
-                        <button type="submit" class="btn-primary full-width">Publish Poster Update</button>
+                        <button type="submit" class="btn-primary full-width">Publish Update</button>
                     </form>
                 </div>
 
-                <!-- Form 2: Add New Service -->
+                <!-- Form 2: Add Service -->
                 <div class="admin-card">
                     <h4><i class="fa-solid fa-plus-circle"></i> Add New Service</h4>
                     <form id="addServiceForm">
                         <label>Service Name</label>
-                        <input type="text" id="serviceTitle" placeholder="e.g., Domicile Apply" required>
+                        <input type="text" id="serviceTitle" placeholder="Service Name" required>
                         
                         <label>Sample Image URL (Optional)</label>
-                        <input type="url" id="serviceImage" placeholder="Paste image link or leave blank">
+                        <input type="url" id="serviceImage" placeholder="Image link">
 
                         <label>Choose Icon</label>
                         <select id="serviceIcon">
@@ -109,35 +115,21 @@
                         </select>
 
                         <label>Short Description</label>
-                        <textarea id="serviceDesc" rows="2" placeholder="Describe service..." required></textarea>
+                        <textarea id="serviceDesc" rows="2" placeholder="Description..." required></textarea>
                         
                         <button type="submit" class="btn-primary full-width">Add Service</button>
-                    </form>
-                </div>
-
-                <!-- Form 3: Update Map Location -->
-                <div class="admin-card">
-                    <h4><i class="fa-solid fa-map-location-dot"></i> Update Map Location</h4>
-                    <form id="updateLocationForm">
-                        <label>Shop Address Text</label>
-                        <input type="text" id="shopAddressInput" placeholder="Main Bazar, Ferozewala" required>
-                        
-                        <label>Google Maps Search Query or Coordinates</label>
-                        <input type="text" id="mapQueryInput" placeholder="Geo Net Cafe Ferozewala" required>
-                        
-                        <button type="submit" class="btn-primary full-width">Save Location</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Daily Updates & Posters Section -->
+    <!-- Daily Updates Section -->
     <section id="updates" class="updates-section reveal">
         <div class="container">
             <div class="section-title">
-                <h2><i class="fa-solid fa-bullhorn"></i> Daily Updates & Job Posters</h2>
-                <p>Check out official job posters, announcements, and new schemes</p>
+                <h2><i class="fa-solid fa-bell"></i> Daily Updates & Job Posters</h2>
+                <p>Fresh online application notices and announcements</p>
             </div>
             <div id="updatesContainer" class="updates-grid"></div>
         </div>
@@ -147,19 +139,19 @@
     <section id="services" class="services-section reveal">
         <div class="container">
             <div class="section-title">
-                <h2><i class="fa-solid fa-briefcase"></i> Our Services & Sample Gallery</h2>
-                <p>Professional documentation, printing, and net cafe services</p>
+                <h2><i class="fa-solid fa-briefcase"></i> Our Complete Services</h2>
+                <p>Professional documentation, online applications, and printing solutions</p>
             </div>
             <div id="servicesContainer" class="services-grid"></div>
         </div>
     </section>
 
-    <!-- Location Section -->
+    <!-- Location & Map Section -->
     <section id="location" class="location-section reveal">
         <div class="container">
             <div class="section-title">
-                <h2><i class="fa-solid fa-map-pin"></i> Visit Our Shop & Contact Us</h2>
-                <p>Get instant directions or reach out via WhatsApp</p>
+                <h2><i class="fa-solid fa-map-pin"></i> Visit Our Shop</h2>
+                <p>Ferozwala Street No 1 Near Sardar Bibi Hospital</p>
             </div>
 
             <div class="location-wrapper">
@@ -167,12 +159,12 @@
                     <div class="loc-badge"><i class="fa-solid fa-store"></i> Open Now</div>
                     <h3>Geo Net Cafe</h3>
                     <p class="owner-name"><i class="fa-solid fa-user-tie"></i> Proprietor: <strong>Muhammad Nadeem</strong></p>
-                    <p class="address-line"><i class="fa-solid fa-location-dot"></i> <span id="displayShopAddress">Main Bazar, Ferozewala, Punjab, Pakistan</span></p>
+                    <p class="address-line"><i class="fa-solid fa-location-dot"></i> <strong>Ferozwala Street No 1 Near Sardar Bibi Hospital</strong></p>
                     <p class="contact-line"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <strong>0314-4409322</strong></p>
                     <p class="contact-line"><i class="fa-solid fa-phone"></i> Phone 2: <strong>0300-4119322</strong></p>
 
                     <div class="map-actions">
-                        <a id="directMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=Geo+Net+Cafe+Ferozewala+Punjab+Pakistan" target="_blank" class="btn-direction">
+                        <a id="directMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=Ferozwala+Street+No+1+Near+Sardar+Bibi+Hospital" target="_blank" class="btn-direction">
                             <i class="fa-solid fa-diamond-turn-right"></i> Get Live Map Directions
                         </a>
                         <a href="https://wa.me/923144409322" target="_blank" class="btn-whatsapp-chat">
@@ -184,7 +176,7 @@
                 <div class="map-frame">
                     <iframe 
                         id="googleMapIframe"
-                        src="https://maps.google.com/maps?q=Ferozewala,Punjab,Pakistan&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        src="https://maps.google.com/maps?q=Ferozwala+Street+No+1+Near+Sardar+Bibi+Hospital&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                         allowfullscreen="" 
                         loading="lazy">
                     </iframe>
