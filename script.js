@@ -34,6 +34,7 @@ function createServiceGraphic(label, sublabel) {
     return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
 }
 
+// All 10 Core Services explicitly enforced
 const defaultServices = [
     { id: 1, title: "Official E-Stamp Papers", icon: "fa-stamp", image: createServiceGraphic("GOVT E-STAMP PAPER", "Official Stamp Papers Issued Instantly"), desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
     { id: 2, title: "Biometric Verification", icon: "fa-fingerprint", image: createServiceGraphic("BIOMETRIC VERIFICATION", "NADRA & Banking Thumb Scan Service"), desc: "Fast and accurate NADRA, SIM, and bank biometric thumb verification services." },
@@ -74,10 +75,11 @@ const defaultUpdates = [
     }
 ];
 
-let storedServices = JSON.parse(localStorage.getItem('geoCafeServicesV11'));
-let services = (storedServices && storedServices.length > 0) ? storedServices : defaultServices;
+// Always load default services + any newly added ones from admin
+let customServices = JSON.parse(localStorage.getItem('geoCafeCustomServicesV13')) || [];
+let services = [...defaultServices, ...customServices];
 
-let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV11'));
+let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV13'));
 let updates = (storedUpdates && storedUpdates.length > 0) ? storedUpdates : defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
@@ -119,8 +121,10 @@ function renderServices() {
         const imgSrc = service.image || createServiceGraphic(service.title.toUpperCase(), "Geo Net Cafe Service Sample");
         const card = document.createElement('div');
         card.className = 'service-card';
+        // Only custom services can be deleted, default 10 remain permanent
+        const deleteBtnHtml = service.isCustom ? `<button class="delete-btn" onclick="deleteService(${service.id})">Delete</button>` : '';
         card.innerHTML = `
-            <button class="delete-btn" onclick="deleteService(${service.id})">Delete</button>
+            ${deleteBtnHtml}
             <div class="service-img-wrapper">
                 <img src="${imgSrc}" alt="${service.title} Sample">
                 <span class="sample-tag">Sample Preview</span>
@@ -138,7 +142,7 @@ function renderServices() {
 }
 
 // -----------------------------------------------------------------
-// PASSWORD CONFIGURATION (Yahan apna password change kar sakte hain)
+// PASSWORD CONFIGURATION
 // -----------------------------------------------------------------
 const OWNER_PASSWORD = "Pakistan@1122"; 
 // -----------------------------------------------------------------
@@ -147,7 +151,7 @@ function openSecretAdmin() {
     if (adminSection) {
         if (adminSection.classList.contains('hidden')) {
             const pin = prompt("Enter Owner Secret Password:");
-            if (pin === Pakistan@1122) {
+            if (pin === OWNER_PASSWORD) {
                 adminSection.classList.remove('hidden');
                 document.body.classList.add('admin-mode');
                 adminSection.scrollIntoView({ behavior: 'smooth' });
@@ -161,10 +165,10 @@ function openSecretAdmin() {
     }
 }
 
-// Owner Login Button Click Handler
 const adminLoginBtn = document.getElementById('adminLoginBtn');
 if (adminLoginBtn) {
-    adminLoginBtn.addEventListener('click', () => {
+    adminLoginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         openSecretAdmin();
     });
 }
@@ -190,7 +194,7 @@ if (addUpdateForm) {
         const image = customImage || createUpdatePosterGraphic(title, category);
 
         updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
-        localStorage.setItem('geoCafeUpdatesV11', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV13', JSON.stringify(updates));
         renderUpdates();
         e.target.reset();
         alert("New job/update poster published successfully!");
@@ -208,8 +212,10 @@ if (addServiceForm) {
 
         const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
-        services.push({ id: Date.now(), title, icon, image, desc });
-        localStorage.setItem('geoCafeServicesV11', JSON.stringify(services));
+        const newService = { id: Date.now(), title, icon, image, desc, isCustom: true };
+        customServices.push(newService);
+        services.push(newService);
+        localStorage.setItem('geoCafeCustomServicesV13', JSON.stringify(customServices));
         renderServices();
         e.target.reset();
         alert("New service added successfully!");
@@ -219,15 +225,16 @@ if (addServiceForm) {
 window.deleteUpdate = function(id) {
     if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdatesV11', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV13', JSON.stringify(updates));
         renderUpdates();
     }
 };
 
 window.deleteService = function(id) {
-    if (confirm("Delete this service?")) {
-        services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServicesV11', JSON.stringify(services));
+    if (confirm("Delete this custom service?")) {
+        customServices = customServices.filter(s => s.id !== id);
+        services = [...defaultServices, ...customServices];
+        localStorage.setItem('geoCafeCustomServicesV13', JSON.stringify(customServices));
         renderServices();
     }
 };
