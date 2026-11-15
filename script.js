@@ -1,19 +1,19 @@
-// Helper for generating default update poster banner graphics if owner doesn't provide a custom poster link
+// Helper for generating update poster banners
 function createUpdatePosterGraphic(title, category) {
     const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
         <defs>
             <linearGradient id="upGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1A1A1A"/>
-                <stop offset="100%" stop-color="#2D200B"/>
+                <stop offset="0%" stop-color="#6E1B3E"/>
+                <stop offset="100%" stop-color="#9A4C6E"/>
             </linearGradient>
         </defs>
         <rect width="600" height="340" fill="url(#upGrad)"/>
-        <rect x="25" y="25" width="550" height="290" rx="12" fill="rgba(255,159,10,0.08)" stroke="#FF9F0A" stroke-width="2" stroke-dasharray="6 4"/>
-        <text x="300" y="80" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#FF9F0A" text-anchor="middle">★ GEO NET CAFE OFFICIAL UPDATE ★</text>
+        <rect x="25" y="25" width="550" height="290" rx="12" fill="rgba(199,138,159,0.15)" stroke="#C78A9F" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="300" y="80" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#C78A9F" text-anchor="middle">★ GEO NET CAFE OFFICIAL UPDATE ★</text>
         <text x="300" y="150" font-family="Segoe UI, sans-serif" font-size="26" font-weight="bold" fill="#FFFFFF" text-anchor="middle">${title.toUpperCase()}</text>
-        <text x="300" y="200" font-family="Segoe UI, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">Category: ${category}</text>
-        <text x="300" y="260" font-family="Segoe UI, sans-serif" font-size="14" fill="#FF9F0A" text-anchor="middle">Visit shop or click WhatsApp to apply online!</text>
+        <text x="300" y="200" font-family="Segoe UI, sans-serif" font-size="16" fill="#F3E5E0" text-anchor="middle">Category: ${category}</text>
+        <text x="300" y="260" font-family="Segoe UI, sans-serif" font-size="14" fill="#C78A9F" text-anchor="middle">Visit shop or click WhatsApp to apply online!</text>
     </svg>`;
     return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
 }
@@ -23,19 +23,19 @@ function createServiceGraphic(label, sublabel) {
     <svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
         <defs>
             <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1E1E1E"/>
-                <stop offset="100%" stop-color="#2C2C2C"/>
+                <stop offset="0%" stop-color="#6E1B3E"/>
+                <stop offset="100%" stop-color="#9A4C6E"/>
             </linearGradient>
         </defs>
         <rect width="600" height="340" fill="url(#g)"/>
-        <rect x="35" y="35" width="530" height="270" rx="14" fill="rgba(255,159,10,0.06)" stroke="#FF9F0A" stroke-width="2" stroke-dasharray="8 6"/>
-        <text x="300" y="150" font-family="Segoe UI, sans-serif" font-size="28" font-weight="bold" fill="#FF9F0A" text-anchor="middle">${label}</text>
-        <text x="300" y="195" font-family="Segoe UI, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">${sublabel}</text>
+        <rect x="35" y="35" width="530" height="270" rx="14" fill="rgba(199,138,159,0.1)" stroke="#C78A9F" stroke-width="2" stroke-dasharray="8 6"/>
+        <text x="300" y="150" font-family="Segoe UI, sans-serif" font-size="28" font-weight="bold" fill="#C78A9F" text-anchor="middle">${label}</text>
+        <text x="300" y="195" font-family="Segoe UI, sans-serif" font-size="16" fill="#F3E5E0" text-anchor="middle">${sublabel}</text>
     </svg>`;
     return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
 }
 
-// Default Services
+// Default Complete Services
 const defaultServices = [
     { id: 1, title: "E-Stamp Paper Issuance", icon: "fa-stamp", image: createServiceGraphic("GOVT E-STAMP PAPER", "Official Stamp Papers Issued Instantly"), desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
     { id: 2, title: "Biometric Verification", icon: "fa-fingerprint", image: createServiceGraphic("BIOMETRIC VERIFICATION", "NADRA & Banking Thumb Scan Service"), desc: "Fast and accurate NADRA, SIM, and bank biometric thumb verification services." },
@@ -49,7 +49,7 @@ const defaultServices = [
     { id: 10, title: "Complete Stationery Store", icon: "fa-pen-ruler", image: createServiceGraphic("OFFICE & SCHOOL STATIONERY", "Files, Registers, Pens & Forms"), desc: "All school, college, and office stationery items, files, registers, and application forms available." }
 ];
 
-// Default Initial Updates with Poster Banners
+// Default Initial Updates
 const defaultUpdates = [
     {
         id: 101,
@@ -77,37 +77,16 @@ const defaultUpdates = [
     }
 ];
 
-const defaultLocation = {
-    address: "Main Bazar Road, Ferozewala, Punjab, Pakistan",
-    mapQuery: "Geo Net Cafe Ferozewala Punjab Pakistan"
-};
-
 // LocalStorage
-let services = JSON.parse(localStorage.getItem('geoCafeServicesV4')) || defaultServices;
-let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV4')) || defaultUpdates;
-let shopLocation = JSON.parse(localStorage.getItem('geoCafeLocationV4')) || defaultLocation;
+let services = JSON.parse(localStorage.getItem('geoCafeServicesV5')) || defaultServices;
+let updates = JSON.parse(localStorage.getItem('geoCafeUpdatesV5')) || defaultUpdates;
 
-// DOM Elements
+const adminSection = document.getElementById('adminSection');
 const servicesContainer = document.getElementById('servicesContainer');
 const updatesContainer = document.getElementById('updatesContainer');
-const adminToggleBtn = document.getElementById('adminToggleBtn');
 const closeAdminBtn = document.getElementById('closeAdminBtn');
-const adminSection = document.getElementById('adminSection');
 
-function renderLocation() {
-    const encodedQuery = encodeURIComponent(shopLocation.mapQuery);
-    const directionURL = `https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`;
-    const embedURL = `https://maps.google.com/maps?q=${encodedQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-
-    document.getElementById('displayShopAddress').textContent = shopLocation.address;
-    document.getElementById('googleMapIframe').src = embedURL;
-    document.getElementById('directMapBtn').href = directionURL;
-
-    document.getElementById('shopAddressInput').value = shopLocation.address;
-    document.getElementById('mapQueryInput').value = shopLocation.mapQuery;
-}
-
-// Render Updates as Poster Cards
+// Render Updates
 function renderUpdates() {
     updatesContainer.innerHTML = '';
     updates.forEach(item => {
@@ -135,6 +114,7 @@ function renderUpdates() {
     });
 }
 
+// Render Services
 function renderServices() {
     servicesContainer.innerHTML = '';
     services.forEach(service => {
@@ -159,13 +139,22 @@ function renderServices() {
     });
 }
 
-// --- SECRET ADMIN ACCESS CODE ---
+// -----------------------------------------------------------------
+// SECRET ADMIN PANEL ACCESS & PASSWORD CONFIGURATION GUIDE
+// -----------------------------------------------------------------
+// PASSWORD KAHAN CHANGE HOTA HAI?
+// Neeche line mein `"nadeem2026"` likha hai. Isko hata kar apna marzi ka 
+// secret password likh lein (misal ke tor par `"nadeem@123"`).
+const OWNER_PASSWORD = "nadeem2026"; 
+// -----------------------------------------------------------------
+
 function openSecretAdmin() {
     if (adminSection.classList.contains('hidden')) {
         const pin = prompt("Enter Owner Secret Password:");
-        if (pin === "Pakistan@1122") { // <-- Aap yahan apna marzi ka password rakh sakte hain
+        if (pin === Pakistan@1122) {
             adminSection.classList.remove('hidden');
             document.body.classList.add('admin-mode');
+            adminSection.scrollIntoView({ behavior: 'smooth' });
         } else if (pin !== null) {
             alert("Incorrect Password!");
         }
@@ -175,7 +164,7 @@ function openSecretAdmin() {
     }
 }
 
-// Logo par 3 baar lagatar click karne se admin panel khule ga
+// Tareeqa 1: Website ke header mein "GEO NET CAFE" logo par lagatar 3 baar click karne se khule ga
 let logoClicks = 0;
 let clickTimer;
 const logoElement = document.querySelector('.logo');
@@ -191,7 +180,7 @@ if (logoElement) {
     });
 }
 
-// Keyboard shortcut: Ctrl + Shift + A dabane se bhi khule ga
+// Tareeqa 2: Keyboard par Ctrl + Shift + A dabane se bhi khule ga
 document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
         e.preventDefault();
@@ -204,7 +193,7 @@ closeAdminBtn.addEventListener('click', () => {
     document.body.classList.remove('admin-mode');
 });
 
-// Add Update with Poster
+// Add Update Form
 document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('updateTitle').value.trim();
@@ -216,13 +205,13 @@ document.getElementById('addUpdateForm').addEventListener('submit', (e) => {
     const image = customImage || createUpdatePosterGraphic(title, category);
 
     updates.unshift({ id: Date.now(), title, category, date: today, image, desc });
-    localStorage.setItem('geoCafeUpdatesV4', JSON.stringify(updates));
+    localStorage.setItem('geoCafeUpdatesV5', JSON.stringify(updates));
     renderUpdates();
     e.target.reset();
     alert("New job/update poster published successfully!");
 });
 
-// Add Service
+// Add Service Form
 document.getElementById('addServiceForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('serviceTitle').value.trim();
@@ -233,29 +222,16 @@ document.getElementById('addServiceForm').addEventListener('submit', (e) => {
     const image = customImage || createServiceGraphic(title.toUpperCase(), "Geo Net Cafe Service Sample");
 
     services.push({ id: Date.now(), title, icon, image, desc });
-    localStorage.setItem('geoCafeServicesV4', JSON.stringify(services));
+    localStorage.setItem('geoCafeServicesV5', JSON.stringify(services));
     renderServices();
     e.target.reset();
     alert("New service added successfully!");
 });
 
-// Update Location
-document.getElementById('updateLocationForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const address = document.getElementById('shopAddressInput').value.trim();
-    const mapQuery = document.getElementById('mapQueryInput').value.trim();
-
-    shopLocation = { address, mapQuery };
-    localStorage.setItem('geoCafeLocationV4', JSON.stringify(shopLocation));
-    renderLocation();
-    alert("Shop location updated!");
-});
-
-// Delete Functions
 window.deleteUpdate = function(id) {
     if (confirm("Delete this update poster?")) {
         updates = updates.filter(u => u.id !== id);
-        localStorage.setItem('geoCafeUpdatesV4', JSON.stringify(updates));
+        localStorage.setItem('geoCafeUpdatesV5', JSON.stringify(updates));
         renderUpdates();
     }
 };
@@ -263,7 +239,7 @@ window.deleteUpdate = function(id) {
 window.deleteService = function(id) {
     if (confirm("Delete this service?")) {
         services = services.filter(s => s.id !== id);
-        localStorage.setItem('geoCafeServicesV4', JSON.stringify(services));
+        localStorage.setItem('geoCafeServicesV5', JSON.stringify(services));
         renderServices();
     }
 };
@@ -281,6 +257,5 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealElements.forEach(el => revealObserver.observe(el));
 
 // Initialize
-renderLocation();
 renderUpdates();
 renderServices();
