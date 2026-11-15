@@ -1,13 +1,14 @@
+/* Color Palette from Your New Image (#6E1B3E, #9A4C6E, #C78A9F, #F3E5E0) */
 :root {
-    --bg-dark: #121212;
-    --card-dark: #1E1E1E;
-    --orange-primary: #FF9F0A;
-    --orange-hover: #e08b00;
+    --maroon-deep: #6E1B3E;    /* Deep Maroon Primary */
+    --mauve-mid: #9A4C6E;      /* Medium Mauve */
+    --rose-soft: #C78A9F;      /* Soft Rose Accent */
+    --cream-bg: #F3E5E0;       /* Warm Cream Background */
+    --card-bg: #FFFFFF;
+    --text-dark: #2B1622;
+    --text-muted: #6B4E5D;
     --whatsapp-green: #25D366;
-    --text-light: #F5F5F5;
-    --text-muted: #AAAAAA;
-    --border-color: #333333;
-    --danger: #ff4d4d;
+    --danger: #c0392b;
 }
 
 * {
@@ -19,8 +20,8 @@
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
+    background-color: var(--cream-bg);
+    color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -33,13 +34,13 @@ body {
 
 /* Header */
 header {
-    background-color: var(--card-dark);
-    border-bottom: 2px solid var(--border-color);
+    background-color: var(--maroon-deep);
+    border-bottom: 3px solid var(--mauve-mid);
     padding: 14px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(110, 27, 62, 0.3);
 }
 
 .nav-container {
@@ -54,23 +55,24 @@ header {
     display: flex;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
 }
 
 .logo i {
     font-size: 2rem;
-    color: var(--orange-primary);
+    color: var(--rose-soft);
     animation: pulseGlow 2.5s infinite ease-in-out;
 }
 
 .logo h1 {
     font-size: 1.6rem;
-    color: var(--text-light);
+    color: #FFFFFF;
     letter-spacing: 1px;
 }
 
 .logo span {
     font-size: 0.8rem;
-    color: var(--orange-primary);
+    color: var(--rose-soft);
     display: block;
 }
 
@@ -82,21 +84,21 @@ nav {
 }
 
 nav a {
-    color: var(--text-light);
+    color: #FFFFFF;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: var(--orange-primary);
+    color: var(--rose-soft);
 }
 
 .nav-whatsapp {
-    background-color: rgba(37, 211, 102, 0.15);
+    background-color: rgba(37, 211, 102, 0.2);
     border: 1px solid var(--whatsapp-green);
     color: var(--whatsapp-green) !important;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-weight: 600;
     display: inline-flex;
@@ -111,25 +113,9 @@ nav a:hover {
 }
 
 /* Buttons */
-.btn-admin {
-    background-color: var(--orange-primary);
-    color: #121212;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: transform 0.2s, background 0.3s;
-}
-
-.btn-admin:hover {
-    background-color: var(--orange-hover);
-    transform: scale(1.03);
-}
-
 .btn-primary {
-    background-color: var(--orange-primary);
-    color: #121212;
+    background-color: var(--maroon-deep);
+    color: #FFFFFF;
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
@@ -141,7 +127,7 @@ nav a:hover {
 }
 
 .btn-primary:hover {
-    background-color: var(--orange-hover);
+    background-color: var(--mauve-mid);
     transform: translateY(-2px);
 }
 
@@ -152,9 +138,10 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #181818 0%, #0d0d0d 100%);
+    background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--mauve-mid) 100%);
+    color: #FFFFFF;
     padding: 75px 0;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 4px solid var(--rose-soft);
 }
 
 .hero-content-wrapper {
@@ -172,9 +159,9 @@ nav a:hover {
 
 .hero-badge {
     display: inline-block;
-    background-color: rgba(255, 159, 10, 0.15);
-    border: 1px solid var(--orange-primary);
-    color: var(--orange-primary);
+    background-color: rgba(199, 138, 159, 0.25);
+    border: 1px solid var(--rose-soft);
+    color: var(--rose-soft);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -185,17 +172,18 @@ nav a:hover {
 .hero-text h2 {
     font-size: 2.7rem;
     margin-bottom: 15px;
-    color: var(--text-light);
+    color: #FFFFFF;
     line-height: 1.2;
 }
 
 .hero-text h2 .highlight {
-    color: var(--orange-primary);
+    color: var(--rose-soft);
 }
 
 .hero-text p {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: #F3E5E0;
+    opacity: 0.95;
     margin-bottom: 25px;
 }
 
@@ -203,6 +191,16 @@ nav a:hover {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+}
+
+.hero .btn-primary {
+    background-color: #FFFFFF;
+    color: var(--maroon-deep);
+}
+
+.hero .btn-primary:hover {
+    background-color: var(--rose-soft);
+    color: var(--maroon-deep);
 }
 
 .btn-whatsapp-hero {
@@ -227,24 +225,24 @@ nav a:hover {
 }
 
 .floating-box {
-    background-color: var(--card-dark);
-    border: 2px solid var(--orange-primary);
+    background-color: var(--card-bg);
+    border: 2px solid var(--rose-soft);
     padding: 30px;
     border-radius: 16px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(255, 159, 10, 0.2);
+    box-shadow: 0 10px 30px rgba(110, 27, 62, 0.25);
     animation: floatAnim 4s ease-in-out infinite;
 }
 
 .floating-box i {
     font-size: 3rem;
-    color: var(--orange-primary);
+    color: var(--maroon-deep);
     margin-bottom: 15px;
 }
 
 .floating-box h4 {
     font-size: 1.4rem;
-    color: var(--text-light);
+    color: var(--maroon-deep);
     margin-bottom: 8px;
 }
 
@@ -255,9 +253,9 @@ nav a:hover {
 
 /* Owner Admin Panel */
 .admin-panel {
-    background-color: #242424;
+    background-color: #FFFFFF;
     padding: 35px 0;
-    border-bottom: 4px solid var(--orange-primary);
+    border-bottom: 4px solid var(--maroon-deep);
     animation: slideDown 0.35s ease-out;
 }
 
@@ -273,13 +271,13 @@ nav a:hover {
 }
 
 .admin-header h3 {
-    color: var(--orange-primary);
+    color: var(--maroon-deep);
     font-size: 1.4rem;
 }
 
 .btn-close {
-    background: var(--orange-primary);
-    color: #121212;
+    background: var(--maroon-deep);
+    color: #FFFFFF;
     border: none;
     font-size: 1.4rem;
     width: 34px;
@@ -301,18 +299,18 @@ nav a:hover {
 }
 
 .admin-card {
-    background-color: var(--card-dark);
+    background-color: var(--cream-bg);
     padding: 22px;
     border-radius: 10px;
-    border: 1px solid var(--border-color);
-    border-top: 4px solid var(--orange-primary);
+    border: 1px solid var(--rose-soft);
+    border-top: 4px solid var(--maroon-deep);
 }
 
 .admin-card h4 {
-    color: var(--orange-primary);
+    color: var(--maroon-deep);
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--rose-soft);
 }
 
 .admin-card label {
@@ -321,7 +319,7 @@ nav a:hover {
     font-weight: 600;
     margin-top: 10px;
     margin-bottom: 4px;
-    color: var(--text-light);
+    color: var(--text-dark);
 }
 
 .admin-card input,
@@ -329,18 +327,11 @@ nav a:hover {
 .admin-card textarea {
     width: 100%;
     padding: 9px 11px;
-    background-color: #121212;
-    border: 1px solid var(--border-color);
-    color: var(--text-light);
+    background-color: #FFFFFF;
+    border: 1px solid var(--mauve-mid);
+    color: var(--text-dark);
     border-radius: 6px;
     font-size: 0.94rem;
-}
-
-.hint-text {
-    display: block;
-    margin-top: 4px;
-    font-size: 0.76rem;
-    color: var(--text-muted);
 }
 
 /* Section Titles */
@@ -351,22 +342,22 @@ nav a:hover {
 
 .section-title h2 {
     font-size: 2rem;
-    color: var(--text-light);
+    color: var(--maroon-deep);
     margin-bottom: 8px;
 }
 
 .section-title h2 i {
-    color: var(--orange-primary);
+    color: var(--mauve-mid);
 }
 
 .section-title p {
     color: var(--text-muted);
 }
 
-/* Daily Updates & Posters Section */
+/* Updates Section */
 .updates-section {
     padding: 65px 0;
-    background-color: #151515;
+    background-color: rgba(199, 138, 159, 0.12);
 }
 
 .updates-grid {
@@ -376,25 +367,24 @@ nav a:hover {
 }
 
 .update-card {
-    background-color: var(--card-dark);
+    background-color: var(--card-bg);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 20px rgba(110, 27, 62, 0.12);
     position: relative;
-    border: 1px solid var(--border-color);
-    border-top: 4px solid var(--orange-primary);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    border: 1px solid var(--rose-soft);
+    border-top: 4px solid var(--maroon-deep);
+    transition: transform 0.35s ease;
 }
 
 .update-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(255, 159, 10, 0.2);
 }
 
 .update-poster-wrapper {
     width: 100%;
     height: 220px;
-    background-color: #1f1f1f;
+    background-color: #f7ecea;
     position: relative;
     overflow: hidden;
 }
@@ -422,9 +412,9 @@ nav a:hover {
 }
 
 .badge {
-    background-color: rgba(255, 159, 10, 0.15);
-    color: var(--orange-primary);
-    border: 1px solid var(--orange-primary);
+    background-color: rgba(154, 76, 110, 0.15);
+    color: var(--maroon-deep);
+    border: 1px solid var(--mauve-mid);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.78rem;
@@ -437,7 +427,7 @@ nav a:hover {
 }
 
 .update-card h3 {
-    color: var(--text-light);
+    color: var(--maroon-deep);
     margin-bottom: 8px;
     font-size: 1.25rem;
 }
@@ -452,8 +442,8 @@ nav a:hover {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: var(--orange-primary);
-    color: #121212;
+    background-color: var(--maroon-deep);
+    color: #FFFFFF;
     padding: 8px 16px;
     border-radius: 6px;
     text-decoration: none;
@@ -463,13 +453,13 @@ nav a:hover {
 }
 
 .btn-update-action:hover {
-    background-color: var(--orange-hover);
+    background-color: var(--mauve-mid);
 }
 
 /* Services Section */
 .services-section {
     padding: 65px 0;
-    background-color: var(--bg-dark);
+    background-color: var(--cream-bg);
 }
 
 .services-grid {
@@ -479,13 +469,13 @@ nav a:hover {
 }
 
 .service-card {
-    background-color: var(--card-dark);
+    background-color: var(--card-bg);
     border-radius: 12px;
     overflow: hidden;
     position: relative;
-    border: 1px solid var(--border-color);
-    border-bottom: 4px solid var(--orange-primary);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    border: 1px solid var(--rose-soft);
+    border-bottom: 4px solid var(--maroon-deep);
+    box-shadow: 0 5px 15px rgba(110, 27, 62, 0.08);
     transition: transform 0.35s ease;
 }
 
@@ -498,7 +488,7 @@ nav a:hover {
     width: 100%;
     height: 170px;
     overflow: hidden;
-    background-color: #252525;
+    background-color: #f7ecea;
 }
 
 .service-img-wrapper img {
@@ -516,13 +506,12 @@ nav a:hover {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: var(--orange-primary);
+    background-color: rgba(110, 27, 62, 0.85);
+    color: var(--rose-soft);
     font-size: 0.72rem;
     font-weight: 700;
     padding: 3px 9px;
     border-radius: 4px;
-    border: 1px solid var(--orange-primary);
 }
 
 .service-icon-badge {
@@ -531,15 +520,15 @@ nav a:hover {
     right: 18px;
     width: 48px;
     height: 48px;
-    background-color: var(--orange-primary);
-    color: #121212;
+    background-color: var(--maroon-deep);
+    color: var(--rose-soft);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    border: 3px solid var(--card-dark);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .service-body {
@@ -547,7 +536,7 @@ nav a:hover {
 }
 
 .service-body h3 {
-    color: var(--text-light);
+    color: var(--maroon-deep);
     margin-bottom: 8px;
     font-size: 1.15rem;
     padding-right: 45px;
@@ -561,18 +550,18 @@ nav a:hover {
 /* Location Section */
 .location-section {
     padding: 65px 0;
-    background-color: #151515;
+    background-color: rgba(199, 138, 159, 0.12);
 }
 
 .location-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
     gap: 30px;
-    background-color: var(--card-dark);
-    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    border: 1px solid var(--rose-soft);
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 24px rgba(110, 27, 62, 0.12);
 }
 
 .location-details {
@@ -597,7 +586,7 @@ nav a:hover {
 
 .location-details h3 {
     font-size: 1.8rem;
-    color: var(--text-light);
+    color: var(--maroon-deep);
     margin-bottom: 12px;
 }
 
@@ -608,11 +597,11 @@ nav a:hover {
 }
 
 .location-details strong {
-    color: var(--text-light);
+    color: var(--text-dark);
 }
 
 .location-details i {
-    color: var(--orange-primary);
+    color: var(--maroon-deep);
     width: 22px;
 }
 
@@ -624,8 +613,8 @@ nav a:hover {
 }
 
 .btn-direction {
-    background-color: var(--orange-primary);
-    color: #121212;
+    background-color: var(--maroon-deep);
+    color: #FFFFFF;
     padding: 13px 20px;
     border-radius: 8px;
     text-decoration: none;
@@ -639,7 +628,7 @@ nav a:hover {
 }
 
 .btn-direction:hover {
-    background-color: var(--orange-hover);
+    background-color: var(--mauve-mid);
 }
 
 .btn-whatsapp-chat {
@@ -662,7 +651,6 @@ nav a:hover {
     min-height: 380px;
     border: none;
     display: block;
-    filter: grayscale(20%) contrast(110%);
 }
 
 /* Delete Button */
@@ -672,7 +660,7 @@ nav a:hover {
     right: 10px;
     z-index: 10;
     background-color: var(--danger);
-    color: var(--text-light);
+    color: #FFFFFF;
     border: none;
     border-radius: 4px;
     padding: 5px 9px;
@@ -687,9 +675,9 @@ body.admin-mode .delete-btn {
 
 /* Footer */
 footer {
-    background-color: #0b0b0b;
-    border-top: 2px solid var(--border-color);
-    color: var(--text-light);
+    background-color: var(--maroon-deep);
+    border-top: 3px solid var(--mauve-mid);
+    color: #FFFFFF;
     padding-top: 45px;
 }
 
@@ -706,15 +694,16 @@ footer {
 }
 
 .footer-info h3 {
-    color: var(--orange-primary);
+    color: var(--rose-soft);
     margin-bottom: 10px;
     font-size: 1.5rem;
 }
 
 .footer-info p {
-    color: var(--text-muted);
+    color: #F3E5E0;
     font-size: 0.95rem;
     margin-bottom: 6px;
+    opacity: 0.9;
 }
 
 .footer-links {
@@ -724,27 +713,27 @@ footer {
 }
 
 .footer-links h4 {
-    color: var(--orange-primary);
+    color: var(--rose-soft);
     margin-bottom: 5px;
 }
 
 .footer-links a {
-    color: var(--text-muted);
+    color: #F3E5E0;
     text-decoration: none;
 }
 
 .footer-bottom {
-    background-color: #050505;
+    background-color: #551430;
     text-align: center;
     padding: 15px 0;
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--rose-soft);
 }
 
 /* Animations */
 @keyframes pulseGlow {
-    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--orange-primary)); }
-    50% { transform: scale(1.08); filter: drop-shadow(0 0 10px var(--orange-primary)); }
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--rose-soft)); }
+    50% { transform: scale(1.08); filter: drop-shadow(0 0 10px var(--rose-soft)); }
 }
 
 @keyframes floatAnim {
