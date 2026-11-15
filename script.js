@@ -159,19 +159,43 @@ function renderServices() {
     });
 }
 
-// Admin Panel Toggle
-adminToggleBtn.addEventListener('click', () => {
+// --- SECRET ADMIN ACCESS CODE ---
+function openSecretAdmin() {
     if (adminSection.classList.contains('hidden')) {
-        const pin = prompt("Enter Owner PIN (Default PIN: Pakistan@1122):");
-        if (pin === "Pakistan@1122") {
+        const pin = prompt("Enter Owner Secret Password:");
+        if (pin === "Pakistan@1122") { // <-- Aap yahan apna marzi ka password rakh sakte hain
             adminSection.classList.remove('hidden');
             document.body.classList.add('admin-mode');
         } else if (pin !== null) {
-            alert("Incorrect PIN!");
+            alert("Incorrect Password!");
         }
     } else {
         adminSection.classList.add('hidden');
         document.body.classList.remove('admin-mode');
+    }
+}
+
+// Logo par 3 baar lagatar click karne se admin panel khule ga
+let logoClicks = 0;
+let clickTimer;
+const logoElement = document.querySelector('.logo');
+if (logoElement) {
+    logoElement.addEventListener('click', () => {
+        logoClicks++;
+        clearTimeout(clickTimer);
+        if (logoClicks === 3) {
+            openSecretAdmin();
+            logoClicks = 0;
+        }
+        clickTimer = setTimeout(() => { logoClicks = 0; }, 800);
+    });
+}
+
+// Keyboard shortcut: Ctrl + Shift + A dabane se bhi khule ga
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        openSecretAdmin();
     }
 });
 
