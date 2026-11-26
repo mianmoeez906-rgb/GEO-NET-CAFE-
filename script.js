@@ -47,14 +47,13 @@ const defaultServices = [
     { id: 9, title: "Custom Number Plates", icon: "fa-car", image: "images (6).jfif", desc: "Standard and stylish number plates made to order for motorcycles, cars, and commercial vehicles." },
     { id: 10, title: "Complete Stationery Store", icon: "fa-pen-ruler", image: "images (7).jfif", desc: "All school, college, and office stationery items, files, registers, and application forms available." }
 ];
-
 const defaultUpdates = [
     {
         id: 101,
         title: "Latest Government Jobs Applications Open",
         category: "Govt Jobs",
         date: "Updated Today",
-        image: createUpdatePosterGraphic("Latest Government Jobs Open", "Govt Jobs"),
+        image: "apni-govt-building-image.png",
         desc: "Visit Geo Net Cafe with your CNIC, educational certificates, and passport size photos to apply online before the closing date."
     },
     {
@@ -62,7 +61,7 @@ const defaultUpdates = [
         title: "BISE Lahore Board Admissions & Result Cards",
         category: "Board & Results",
         date: "Active Notice",
-        image: createUpdatePosterGraphic("Lahore Board Admissions", "Board & Results"),
+        image: "Lahore%20Board%20Admissions%20Poster_2.png",
         desc: "Online admission forms for Lahore Board and official result card printouts are available at our counter."
     },
     {
