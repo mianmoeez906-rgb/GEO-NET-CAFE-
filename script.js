@@ -36,16 +36,16 @@ function createServiceGraphic(label, sublabel) {
 
 // All 10 Core Services explicitly enforced
 const defaultServices = [
-    { id: 1, title: "Official E-Stamp Papers", icon: "fa-stamp", image: createServiceGraphic("GOVT E-STAMP PAPER", "Official Stamp Papers Issued Instantly"), desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
-    { id: 2, title: "Biometric Verification", icon: "fa-fingerprint", image: createServiceGraphic("BIOMETRIC VERIFICATION", "NADRA & Banking Thumb Scan Service"), desc: "Fast and accurate NADRA, SIM, and bank biometric thumb verification services." },
-    { id: 3, title: "Duplicate PVC Card Printing", icon: "fa-id-card", image: createServiceGraphic("DUPLICATE PVC CARD", "High-Durability Smart ID & License Card"), desc: "High-quality, waterproof duplicate PVC card printing for ID cards, driving licenses, and official cards." },
-    { id: 4, title: "Driving Learner License Apply", icon: "fa-car-side", image: createServiceGraphic("LEARNER PERMIT APPLY", "Online Driving License Registration"), desc: "Complete online registration and fee processing for new bike & car driving learner permits." },
-    { id: 5, title: "New Govt Jobs & Schemes", icon: "fa-laptop-file", image: createServiceGraphic("GOVT JOBS & SCHEMES", "PPSC • FPSC • Punjab Welfare Portals"), desc: "Online application submission for all latest government jobs and public welfare schemes." },
-    { id: 6, title: "Lahore Board Admissions & Results", icon: "fa-graduation-cap", image: createServiceGraphic("BISE LAHORE BOARD", "Online Admission Forms & Result Cards"), desc: "Lahore Board matric & intermediate online admission forms submission and instant result card printing." },
-    { id: 7, title: "Urgent Passport Size Photos", icon: "fa-camera", image: createServiceGraphic("PASSPORT SIZE PHOTOS", "Blue & White Background Studio Print"), desc: "High-resolution studio passport size photographs printed in minutes for visas, jobs, and admissions." },
-    { id: 8, title: "A4 Size Photo Frames", icon: "fa-image", image: createServiceGraphic("A4 SIZE WALL FRAMES", "Certificate, Degree & Portrait Framing"), desc: "Elegant A4 size frames available for certificates, degrees, portraits, and memorable photos." },
-    { id: 9, title: "Custom Number Plates", icon: "fa-car", image: createServiceGraphic("VEHICLE NUMBER PLATES", "Bike & Car Embossed / Stylish Plates"), desc: "Standard and stylish number plates made to order for motorcycles, cars, and commercial vehicles." },
-    { id: 10, title: "Complete Stationery Store", icon: "fa-pen-ruler", image: createServiceGraphic("OFFICE & SCHOOL STATIONERY", "Files, Registers, Pens & Forms"), desc: "All school, college, and office stationery items, files, registers, and application forms available." }
+    { id: 1, title: "Official E-Stamp Papers", icon: "fa-stamp", image: "images.jfif", desc: "Official government E-Stamp papers issued immediately for affidavits, agreements, registry, and legal documentation." },
+    { id: 2, title: "Biometric Verification", icon: "fa-fingerprint", image: "images (2).jfif", desc: "Fast and accurate NADRA, SIM, and bank biometric thumb verification services." },
+    { id: 3, title: "Duplicate PVC Card Printing", icon: "fa-id-card", image: "images (3).jfif", desc: "High-quality, waterproof duplicate PVC card printing for ID cards, driving licenses, and official cards." },
+    { id: 4, title: "Driving Learner License Apply", icon: "fa-car-side", image: "images (1).jfif", desc: "Complete online registration and fee processing for new bike & car driving learner permits." },
+    { id: 5, title: "New Govt Jobs & Schemes", icon: "fa-laptop-file", image: "images (4).jfif", desc: "Online application submission for all latest government jobs and public welfare schemes." },
+    { id: 6, title: "Lahore Board Admissions & Results", icon: "fa-graduation-cap", image: "images (8).jfif", desc: "Lahore Board matric & intermediate online admission forms submission and instant result card printing." },
+    { id: 7, title: "Urgent Passport Size Photos", icon: "fa-camera", image: "images (5).jfif", desc: "High-resolution studio passport size photographs printed in minutes for visas, jobs, and admissions." },
+    { id: 8, title: "A4 Size Photo Frames", icon: "fa-image", image: "download.jfif", desc: "Elegant A4 size frames available for certificates, degrees, portraits, and memorable photos." },
+    { id: 9, title: "Custom Number Plates", icon: "fa-car", image: "images (6).jfif", desc: "Standard and stylish number plates made to order for motorcycles, cars, and commercial vehicles." },
+    { id: 10, title: "Complete Stationery Store", icon: "fa-pen-ruler", image: "images (7).jfif", desc: "All school, college, and office stationery items, files, registers, and application forms available." }
 ];
 
 const defaultUpdates = [
