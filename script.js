@@ -1,6 +1,7 @@
-// Easy-to-change default name & number (can also be updated live from Owner Panel)
+// Easy-to-change default name & numbers (can also be updated live from Owner Panel)
 const DEFAULT_INFO_CONTACT_NAME = "Mr. Baloch";
 const DEFAULT_INFO_CONTACT_PHONE = "0301-7625888";
+const DEFAULT_INFO_CONTACT_PHONE_2 = "0300-4119322";
 
 function escapeXml(str = "") {
     return String(str)
@@ -81,7 +82,7 @@ function createServiceGraphic(label, sublabel) {
     return createAIArtImage(label, sublabel, "AI SERVICE VISUAL");
 }
 
-// Updated Core Services (V16)
+// Updated Core Services (V17)
 const defaultServices = [
     {
         id: 1,
@@ -190,57 +191,104 @@ const defaultUpdates = [
 ];
 
 // Contact state (can be changed easily from Owner Admin Panel)
-let infoContact = JSON.parse(localStorage.getItem('geoCafeInfoContactV16')) || {
+let infoContact = JSON.parse(localStorage.getItem('geoCafeInfoContactV17')) || {
     name: DEFAULT_INFO_CONTACT_NAME,
-    phone: DEFAULT_INFO_CONTACT_PHONE
+    phone: DEFAULT_INFO_CONTACT_PHONE,
+    phone2: DEFAULT_INFO_CONTACT_PHONE_2
 };
 
-function sanitizeWaNumber(phone) {
+function sanitizeWaNumber(phone, fallback = "923017625888") {
     const digits = String(phone || "").replace(/\D/g, "");
-    if (!digits) return "923017625888";
+    if (!digits) return fallback;
     if (digits.startsWith("0")) return "92" + digits.slice(1);
     return digits;
 }
 
-function getWhatsappLink(customText = "") {
-    const waNum = sanitizeWaNumber(infoContact.phone);
+function getWhatsappLink(customText = "", useSecond = false) {
+    const rawPhone = useSecond ? infoContact.phone2 : infoContact.phone;
+    const fallback = useSecond ? "923004119322" : "923017625888";
+    const waNum = sanitizeWaNumber(rawPhone, fallback);
     if (!customText) return `https://wa.me/${waNum}`;
     return `https://wa.me/${waNum}?text=${encodeURIComponent(customText)}`;
 }
 
 function applyContactInfo() {
+    infoContact.phone2 = infoContact.phone2 || DEFAULT_INFO_CONTACT_PHONE_2;
+
     const displayName = document.getElementById('displayInfoName');
     const displayPhone = document.getElementById('displayInfoPhone');
+    const displayPhone2 = document.getElementById('displayInfoPhone2');
+    const infoBoxWaLink1 = document.getElementById('infoBoxWaLink1');
+    const infoBoxWaLink2 = document.getElementById('infoBoxWaLink2');
+
     const footerName = document.getElementById('footerInfoName');
     const footerPhone = document.getElementById('footerInfoPhone');
+    const footerPhone2 = document.getElementById('footerInfoPhone2');
     const infoWhatsappBtn = document.getElementById('infoWhatsappBtn');
+    const infoWhatsappBtn2 = document.getElementById('infoWhatsappBtn2');
     const footerWhatsappLink = document.getElementById('footerWhatsappLink');
+    const footerWhatsappLink2 = document.getElementById('footerWhatsappLink2');
+    const footerWaPillText1 = document.getElementById('footerWaPillText1');
+    const footerWaPillText2 = document.getElementById('footerWaPillText2');
+    const headerWaPrimary = document.getElementById('headerWaPrimary');
+    const headerWaSecondary = document.getElementById('headerWaSecondary');
+    const heroWaPrimary = document.getElementById('heroWaPrimary');
+    const heroWaSecondary = document.getElementById('heroWaSecondary');
 
     if (displayName) displayName.textContent = infoContact.name;
     if (displayPhone) displayPhone.textContent = infoContact.phone;
+    if (displayPhone2) displayPhone2.textContent = infoContact.phone2;
     if (footerName) footerName.textContent = infoContact.name;
     if (footerPhone) footerPhone.textContent = infoContact.phone;
+    if (footerPhone2) footerPhone2.textContent = infoContact.phone2;
+    if (footerWaPillText1) footerWaPillText1.textContent = infoContact.phone;
+    if (footerWaPillText2) footerWaPillText2.textContent = infoContact.phone2;
 
-    const waUrl = getWhatsappLink();
+    const waUrl1 = getWhatsappLink();
+    const waUrl2 = getWhatsappLink("", true);
+
+    if (infoBoxWaLink1) infoBoxWaLink1.href = waUrl1;
+    if (infoBoxWaLink2) infoBoxWaLink2.href = waUrl2;
+    if (headerWaPrimary) {
+        headerWaPrimary.href = waUrl1;
+        headerWaPrimary.innerHTML = `<i class="fa-brands fa-whatsapp"></i> ${infoContact.phone}`;
+    }
+    if (headerWaSecondary) {
+        headerWaSecondary.href = waUrl2;
+        headerWaSecondary.innerHTML = `<i class="fa-brands fa-whatsapp"></i> ${infoContact.phone2}`;
+    }
+    if (heroWaPrimary) {
+        heroWaPrimary.href = waUrl1;
+        heroWaPrimary.innerHTML = `<i class="fa-brands fa-whatsapp"></i> WhatsApp 1: ${infoContact.phone}`;
+    }
+    if (heroWaSecondary) {
+        heroWaSecondary.href = waUrl2;
+        heroWaSecondary.innerHTML = `<i class="fa-brands fa-whatsapp"></i> WhatsApp 2: ${infoContact.phone2}`;
+    }
     if (infoWhatsappBtn) {
-        infoWhatsappBtn.href = waUrl;
-        infoWhatsappBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (${infoContact.phone})`;
+        infoWhatsappBtn.href = waUrl1;
+        infoWhatsappBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> WhatsApp 1: ${infoContact.phone} (${infoContact.name})`;
     }
-    if (footerWhatsappLink) {
-        footerWhatsappLink.href = waUrl;
+    if (infoWhatsappBtn2) {
+        infoWhatsappBtn2.href = waUrl2;
+        infoWhatsappBtn2.innerHTML = `<i class="fa-brands fa-whatsapp"></i> WhatsApp 2: ${infoContact.phone2} (Backup)`;
     }
+    if (footerWhatsappLink) footerWhatsappLink.href = waUrl1;
+    if (footerWhatsappLink2) footerWhatsappLink2.href = waUrl2;
 
     const nameInput = document.getElementById('infoContactNameInput');
     const phoneInput = document.getElementById('infoContactPhoneInput');
+    const phone2Input = document.getElementById('infoContactPhone2Input');
     if (nameInput) nameInput.value = infoContact.name;
     if (phoneInput) phoneInput.value = infoContact.phone;
+    if (phone2Input) phone2Input.value = infoContact.phone2;
 }
 
 // Always load default services + any newly added ones from admin
-let customServices = JSON.parse(localStorage.getItem('geoCafeCustomServicesV16')) || [];
+let customServices = JSON.parse(localStorage.getItem('geoCafeCustomServicesV17')) || [];
 let services = [...defaultServices, ...customServices];
 
-let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV16'));
+let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV17'));
 let updates = (storedUpdates && storedUpdates.length > 0) ? storedUpdates : defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
@@ -305,13 +353,13 @@ function renderServices() {
 
 function deleteUpdate(id) {
     updates = updates.filter(u => u.id !== id);
-    localStorage.setItem('geoCafeUpdatesV16', JSON.stringify(updates));
+    localStorage.setItem('geoCafeUpdatesV17', JSON.stringify(updates));
     renderUpdates();
 }
 
 function deleteService(id) {
     customServices = customServices.filter(s => s.id !== id);
-    localStorage.setItem('geoCafeCustomServicesV16', JSON.stringify(customServices));
+    localStorage.setItem('geoCafeCustomServicesV17', JSON.stringify(customServices));
     services = [...defaultServices, ...customServices];
     renderServices();
 }
@@ -402,7 +450,7 @@ if (addUpdateForm) {
                 desc
             };
             updates.unshift(newUpdate);
-            localStorage.setItem('geoCafeUpdatesV16', JSON.stringify(updates));
+            localStorage.setItem('geoCafeUpdatesV17', JSON.stringify(updates));
             renderUpdates();
             addUpdateForm.reset();
             const preview = document.getElementById('updateImagePreview');
@@ -440,7 +488,7 @@ if (addServiceForm) {
                 isCustom: true
             };
             customServices.push(newService);
-            localStorage.setItem('geoCafeCustomServicesV16', JSON.stringify(customServices));
+            localStorage.setItem('geoCafeCustomServicesV17', JSON.stringify(customServices));
             services = [...defaultServices, ...customServices];
             renderServices();
             addServiceForm.reset();
@@ -458,15 +506,16 @@ if (addServiceForm) {
     });
 }
 
-// Save Info Contact Form (Mr. Baloch / 0301-7625888)
+// Save Info Contact Form (Mr. Baloch / 0301-7625888 + 0300-4119322)
 const contactSettingsForm = document.getElementById('contactSettingsForm');
 if (contactSettingsForm) {
     contactSettingsForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const newName = document.getElementById('infoContactNameInput').value.trim() || DEFAULT_INFO_CONTACT_NAME;
         const newPhone = document.getElementById('infoContactPhoneInput').value.trim() || DEFAULT_INFO_CONTACT_PHONE;
-        infoContact = { name: newName, phone: newPhone };
-        localStorage.setItem('geoCafeInfoContactV16', JSON.stringify(infoContact));
+        const newPhone2 = document.getElementById('infoContactPhone2Input').value.trim() || DEFAULT_INFO_CONTACT_PHONE_2;
+        infoContact = { name: newName, phone: newPhone, phone2: newPhone2 };
+        localStorage.setItem('geoCafeInfoContactV17', JSON.stringify(infoContact));
         applyContactInfo();
         renderUpdates();
         alert("Information contact updated!");
