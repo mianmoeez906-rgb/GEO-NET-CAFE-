@@ -6,8 +6,17 @@
     --card-bg: #FFFFFF;
     --text-dark: #2B1622;
     --text-muted: #6B4E5D;
-    --whatsapp-green: #25D366;
+
+    /* Refined Emerald + Teal + Mint Green Combination */
+    --emerald-deep: #0F5132;
+    --emerald-mid: #198754;
+    --teal-accent: #0D9488;
+    --mint-soft: #D1FAE5;
+    --mint-glow: #6EE7B7;
+
     --danger: #c0392b;
+    --mx: 50%;
+    --my: 50%;
 }
 
 * {
@@ -22,6 +31,67 @@ body {
     background-color: var(--cream-bg);
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Soft Cursor Hive Spotlight */
+.mouse-aura {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+        circle,
+        rgba(13, 148, 136, 0.16) 0%,
+        rgba(199, 138, 159, 0.12) 45%,
+        transparent 72%
+    );
+    transition: opacity 0.25s ease;
+}
+
+/* Section & Tab Mouse Color Shift */
+.reactive-surface {
+    position: relative;
+    transition: background 0.45s ease, filter 0.35s ease;
+}
+
+.reactive-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: radial-gradient(
+        420px circle at var(--mx) var(--my),
+        rgba(13, 148, 136, 0.13),
+        rgba(154, 76, 110, 0.09) 45%,
+        transparent 75%
+    );
+    z-index: 0;
+}
+
+.reactive-surface:hover::before {
+    opacity: 1;
+}
+
+.reactive-surface > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.reactive-tab {
+    transition: transform 0.25s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.reactive-tab:hover {
+    transform: translateY(-2px) scale(1.02);
+    filter: saturate(1.15);
 }
 
 .container {
@@ -41,6 +111,11 @@ header {
     box-shadow: 0 4px 15px rgba(110, 27, 62, 0.3);
 }
 
+header:hover {
+    background: linear-gradient(90deg, #5A1533 0%, #6E1B3E 55%, #0F5132 100%);
+    border-bottom-color: var(--mint-glow);
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -58,6 +133,12 @@ header {
 .logo i {
     font-size: 2rem;
     color: var(--rose-soft);
+    transition: color 0.3s ease, transform 0.35s ease;
+}
+
+.logo:hover i {
+    color: var(--mint-glow);
+    transform: rotate(18deg);
 }
 
 .logo h1 {
@@ -83,10 +164,13 @@ nav a {
     color: #FFFFFF;
     text-decoration: none;
     font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 6px;
 }
 
 nav a:hover {
-    color: var(--rose-soft);
+    color: var(--mint-glow);
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 .nav-admin-btn {
@@ -100,24 +184,30 @@ nav a:hover {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: all 0.3s;
 }
 
 .nav-admin-btn:hover {
-    background-color: #FFFFFF;
-    transform: translateY(-2px);
+    background-color: var(--mint-soft);
+    color: var(--emerald-deep);
+    border-color: var(--mint-glow);
 }
 
 .nav-whatsapp {
-    background-color: rgba(37, 211, 102, 0.2);
-    border: 1px solid var(--whatsapp-green);
-    color: var(--whatsapp-green) !important;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(13, 148, 136, 0.28));
+    border: 1px solid var(--mint-glow);
+    color: var(--mint-soft) !important;
     padding: 6px 14px;
     border-radius: 20px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+}
+
+.nav-whatsapp:hover {
+    background: linear-gradient(135deg, var(--emerald-mid), var(--teal-accent));
+    color: #FFFFFF !important;
+    box-shadow: 0 0 14px rgba(110, 231, 183, 0.45);
 }
 
 /* Buttons */
@@ -134,7 +224,8 @@ nav a:hover {
 }
 
 .btn-primary:hover {
-    background-color: var(--mauve-mid);
+    background: linear-gradient(135deg, var(--mauve-mid), var(--teal-accent));
+    box-shadow: 0 6px 18px rgba(13, 148, 136, 0.3);
 }
 
 .full-width {
@@ -144,10 +235,15 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--mauve-mid) 100%);
+    background: linear-gradient(135deg, var(--maroon-deep) 0%, var(--mauve-mid) 68%, var(--emerald-deep) 100%);
     color: #FFFFFF;
-    padding: 75px 0;
+    padding: 70px 0;
     border-bottom: 4px solid var(--rose-soft);
+}
+
+.hero:hover {
+    background: linear-gradient(135deg, #591330 0%, #7C3557 52%, #0D6E56 100%);
+    border-bottom-color: var(--mint-glow);
 }
 
 .hero-content-wrapper {
@@ -163,6 +259,26 @@ nav a:hover {
     min-width: 300px;
 }
 
+.top-one-roof-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ffe8a3 0%, #d1fae5 100%);
+    color: var(--maroon-deep);
+    font-weight: 900;
+    font-size: 0.9rem;
+    letter-spacing: 0.6px;
+    padding: 7px 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.top-one-roof-banner:hover {
+    background: linear-gradient(90deg, #a7f3d0 0%, #fde68a 100%);
+    color: var(--emerald-deep);
+}
+
 .hero-badge {
     display: inline-block;
     background-color: rgba(199, 138, 159, 0.25);
@@ -173,6 +289,13 @@ nav a:hover {
     font-size: 0.85rem;
     font-weight: 700;
     margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.hero-badge:hover {
+    background-color: rgba(110, 231, 183, 0.2);
+    border-color: var(--mint-glow);
+    color: var(--mint-soft);
 }
 
 .hero-text h2 {
@@ -184,6 +307,11 @@ nav a:hover {
 
 .hero-text h2 .highlight {
     color: var(--rose-soft);
+    transition: color 0.3s ease;
+}
+
+.hero:hover .hero-text h2 .highlight {
+    color: var(--mint-glow);
 }
 
 .hero-text p {
@@ -203,8 +331,13 @@ nav a:hover {
     color: var(--maroon-deep);
 }
 
+.hero .btn-primary:hover {
+    background-color: var(--mint-soft);
+    color: var(--emerald-deep);
+}
+
 .btn-whatsapp-hero {
-    background-color: var(--whatsapp-green);
+    background: linear-gradient(135deg, var(--emerald-mid) 0%, var(--teal-accent) 100%);
     color: #ffffff;
     padding: 12px 24px;
     border-radius: 8px;
@@ -213,14 +346,33 @@ nav a:hover {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    border: 1px solid rgba(209, 250, 229, 0.45);
+}
+
+.btn-whatsapp-hero:hover {
+    background: linear-gradient(135deg, var(--teal-accent) 0%, var(--emerald-deep) 100%);
+    box-shadow: 0 8px 20px rgba(13, 148, 136, 0.4);
 }
 
 .hero-card-visual {
     flex: 0 0 340px;
 }
 
+/* Reactive Hive / Tilt Cards */
+.reactive-card {
+    --rx: 0deg;
+    --ry: 0deg;
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 0.2s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.reactive-card:hover {
+    border-color: var(--teal-accent);
+    box-shadow: 0 14px 28px rgba(15, 81, 50, 0.18), 0 0 0 1px rgba(13, 148, 136, 0.22);
+}
+
 .shop-photo-card {
-    background-color: var(--card-bg);
+    background: linear-gradient(160deg, #FFFFFF 0%, #FDF7F5 100%);
     border: 2px solid var(--rose-soft);
     padding: 25px;
     border-radius: 16px;
@@ -228,16 +380,30 @@ nav a:hover {
     box-shadow: 0 10px 30px rgba(110, 27, 62, 0.25);
 }
 
+.shop-photo-card:hover {
+    background: linear-gradient(160deg, #FFFFFF 0%, #ECFDF5 100%);
+}
+
 .shop-photo-card i {
     font-size: 2.8rem;
     color: var(--maroon-deep);
     margin-bottom: 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.shop-photo-card:hover i {
+    color: var(--emerald-mid);
+    transform: scale(1.08);
 }
 
 .shop-photo-card h4 {
     font-size: 1.3rem;
     color: var(--maroon-deep);
     margin-bottom: 5px;
+}
+
+.shop-photo-card:hover h4 {
+    color: var(--emerald-deep);
 }
 
 .shop-photo-card p {
@@ -280,6 +446,10 @@ nav a:hover {
     font-weight: bold;
 }
 
+.btn-close:hover {
+    background: var(--emerald-mid);
+}
+
 .admin-note {
     margin-bottom: 20px;
     color: var(--text-muted);
@@ -287,7 +457,7 @@ nav a:hover {
 
 .admin-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 20px;
 }
 
@@ -297,6 +467,11 @@ nav a:hover {
     border-radius: 10px;
     border: 1px solid var(--rose-soft);
     border-top: 4px solid var(--maroon-deep);
+}
+
+.admin-card:hover {
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECFDF5 100%);
+    border-top-color: var(--emerald-mid);
 }
 
 .admin-card h4 {
@@ -323,6 +498,14 @@ nav a:hover {
     color: var(--text-dark);
 }
 
+.admin-card input:focus,
+.admin-card select:focus,
+.admin-card textarea:focus {
+    outline: none;
+    border-color: var(--teal-accent);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.16);
+}
+
 .admin-image-preview {
     max-width: 100%;
     max-height: 150px;
@@ -347,6 +530,11 @@ nav a:hover {
     color: var(--maroon-deep);
     font-size: 2rem;
     margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.reactive-surface:hover .section-title h2 {
+    color: var(--emerald-deep);
 }
 
 .section-title p {
@@ -356,7 +544,7 @@ nav a:hover {
 .updates-grid,
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 24px;
 }
 
@@ -370,23 +558,37 @@ nav a:hover {
     box-shadow: 0 6px 18px rgba(110, 27, 62, 0.1);
 }
 
+.update-card:hover,
+.service-card:hover {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF9 100%);
+}
+
 .update-poster-wrapper img,
 .service-img-wrapper img {
     width: 100%;
-    height: 190px;
+    height: 195px;
     object-fit: cover;
     display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.update-card:hover .update-poster-wrapper img,
+.service-card:hover .service-img-wrapper img {
+    transform: scale(1.04);
+    filter: saturate(1.12);
 }
 
 .sample-tag {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: rgba(43, 22, 34, 0.8);
-    color: #FFFFFF;
+    background: rgba(15, 81, 50, 0.88);
+    color: var(--mint-soft);
     font-size: 0.75rem;
+    font-weight: 600;
     padding: 3px 9px;
     border-radius: 12px;
+    border: 1px solid rgba(110, 231, 183, 0.35);
 }
 
 .service-icon-badge {
@@ -402,6 +604,13 @@ nav a:hover {
     margin: -22px 18px 8px;
     position: relative;
     border: 2px solid #FFFFFF;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover .service-icon-badge {
+    background: linear-gradient(135deg, var(--emerald-mid), var(--teal-accent));
+    color: #FFFFFF;
+    transform: scale(1.08);
 }
 
 .update-body,
@@ -425,6 +634,12 @@ nav a:hover {
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.update-card:hover .badge {
+    background-color: var(--mint-soft);
+    color: var(--emerald-deep);
 }
 
 .update-date {
@@ -436,12 +651,28 @@ nav a:hover {
 .service-body h3 {
     color: var(--maroon-deep);
     margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.update-card:hover .update-body h3,
+.service-card:hover .service-body h3 {
+    color: var(--emerald-deep);
 }
 
 .update-body p,
 .service-body p {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.94rem;
+}
+
+.highlighted-pill {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffe8a3 0%, #d1fae5 100%);
+    color: var(--emerald-deep);
+    font-weight: 800;
+    padding: 1px 8px;
+    border-radius: 6px;
+    border: 1px solid #34d399;
 }
 
 .btn-update-action {
@@ -449,13 +680,18 @@ nav a:hover {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: var(--whatsapp-green);
+    background: linear-gradient(135deg, var(--emerald-mid) 0%, var(--teal-accent) 100%);
     color: #FFFFFF;
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 6px;
     font-weight: 700;
     font-size: 0.9rem;
+}
+
+.btn-update-action:hover {
+    background: linear-gradient(135deg, var(--teal-accent) 0%, var(--emerald-deep) 100%);
+    box-shadow: 0 6px 14px rgba(13, 148, 136, 0.35);
 }
 
 .delete-btn {
@@ -493,15 +729,25 @@ body.admin-mode .delete-btn {
     border: 1px solid var(--rose-soft);
 }
 
+.location-details:hover {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF9 100%);
+}
+
 .loc-badge {
     display: inline-block;
-    background: #e6f9ed;
-    color: #15803d;
+    background: var(--mint-soft);
+    color: var(--emerald-deep);
+    border: 1px solid rgba(16, 185, 129, 0.45);
     padding: 4px 12px;
     border-radius: 15px;
     font-weight: 700;
     font-size: 0.85rem;
     margin-bottom: 10px;
+}
+
+.loc-badge:hover {
+    background: linear-gradient(135deg, var(--emerald-mid), var(--teal-accent));
+    color: #FFFFFF;
 }
 
 .location-details h3 {
@@ -513,6 +759,58 @@ body.admin-mode .delete-btn {
 .location-details p {
     margin-bottom: 8px;
     color: var(--text-dark);
+}
+
+/* Highlighted WhatsApp Info Box (Emerald + Teal + Soft Mint) */
+.info-contact-highlight {
+    margin: 14px 0 6px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ecfdf5 0%, #f0fdfa 55%, #f3e5e0 100%);
+    border: 2px solid var(--teal-accent);
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.16);
+}
+
+.info-contact-highlight:hover {
+    background: linear-gradient(135deg, #d1fae5 0%, #ccfbf1 100%);
+    border-color: var(--emerald-mid);
+}
+
+.info-highlight-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--emerald-deep);
+    background-color: #ffe8a3;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    width: fit-content;
+}
+
+.info-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+}
+
+.info-contact-row i {
+    color: var(--emerald-mid);
+    font-size: 1.35rem;
+}
+
+.contact-person-tag {
+    background: linear-gradient(135deg, var(--maroon-deep), var(--emerald-deep));
+    color: #FFFFFF;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 12px;
 }
 
 .map-actions {
@@ -537,15 +835,30 @@ body.admin-mode .delete-btn {
     color: #FFFFFF;
 }
 
+.btn-direction:hover {
+    background: linear-gradient(135deg, var(--maroon-deep), var(--teal-accent));
+}
+
 .btn-outline-map {
     border: 1px solid var(--maroon-deep);
     color: var(--maroon-deep);
     background: #FFFFFF;
 }
 
+.btn-outline-map:hover {
+    border-color: var(--emerald-mid);
+    background: var(--mint-soft);
+    color: var(--emerald-deep);
+}
+
 .btn-whatsapp-chat {
-    background: var(--whatsapp-green);
+    background: linear-gradient(135deg, var(--emerald-mid) 0%, var(--teal-accent) 100%);
     color: #FFFFFF;
+}
+
+.btn-whatsapp-chat:hover {
+    background: linear-gradient(135deg, var(--teal-accent) 0%, var(--emerald-deep) 100%);
+    box-shadow: 0 6px 16px rgba(13, 148, 136, 0.35);
 }
 
 .map-frame iframe {
@@ -556,12 +869,20 @@ body.admin-mode .delete-btn {
     border-radius: 12px;
 }
 
+.map-frame:hover iframe {
+    border-color: var(--teal-accent);
+}
+
 /* Footer */
 footer {
     background: var(--maroon-deep);
     color: #FFFFFF;
     padding-top: 40px;
     margin-top: 20px;
+}
+
+footer:hover {
+    background: linear-gradient(180deg, #6E1B3E 0%, #4A1129 68%, #0F5132 100%);
 }
 
 .footer-content {
@@ -573,7 +894,7 @@ footer {
 }
 
 .footer-info {
-    max-width: 700px;
+    max-width: 720px;
 }
 
 .footer-info h3 {
@@ -581,10 +902,26 @@ footer {
     color: var(--rose-soft);
 }
 
+footer:hover .footer-info h3 {
+    color: var(--mint-glow);
+}
+
 .footer-info p {
     margin-bottom: 6px;
     font-size: 0.92rem;
     color: #F3E5E0;
+}
+
+.footer-info-contact {
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.22), rgba(13, 148, 136, 0.16));
+    border-left: 3px solid var(--mint-glow);
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.footer-info-contact i {
+    color: var(--mint-glow);
+    margin: 0 3px;
 }
 
 .footer-links {
@@ -604,11 +941,11 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--rose-soft);
+    color: var(--mint-glow);
 }
 
 .footer-bottom {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.24);
     text-align: center;
     padding: 14px;
     font-size: 0.85rem;
