@@ -29,8 +29,11 @@
                 <button id="adminLoginBtn" class="nav-admin-btn reactive-tab">
                     <i class="fa-solid fa-lock"></i> Owner Login
                 </button>
-                <a href="https://wa.me/923017625888" target="_blank" class="nav-whatsapp reactive-tab">
+                <a id="headerWaPrimary" href="https://wa.me/923017625888" target="_blank" class="nav-whatsapp reactive-tab">
                     <i class="fa-brands fa-whatsapp"></i> 0301-7625888
+                </a>
+                <a id="headerWaSecondary" href="https://wa.me/923004119322" target="_blank" class="nav-whatsapp reactive-tab">
+                    <i class="fa-brands fa-whatsapp"></i> 0300-4119322
                 </a>
             </nav>
         </div>
@@ -48,8 +51,11 @@
                 <p>E-Stamp (Rs. 100 to 3000), NADRA & PakID services, Vehicle & Biometric services, Printing & CV Typing, Govt Jobs & Schemes, Admissions & Tests, and Photo Studio.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn-primary reactive-tab">Explore All Services</a>
-                    <a href="https://wa.me/923017625888" target="_blank" class="btn-whatsapp-hero reactive-tab">
-                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                    <a id="heroWaPrimary" href="https://wa.me/923017625888" target="_blank" class="btn-whatsapp-hero reactive-tab">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp 1: 0301-7625888
+                    </a>
+                    <a id="heroWaSecondary" href="https://wa.me/923004119322" target="_blank" class="btn-whatsapp-hero reactive-tab">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp 2: 0300-4119322
                     </a>
                 </div>
             </div>
@@ -60,7 +66,8 @@
                         <h4>Geo Net Cafe</h4>
                         <p>Proprietor: Nadeem Asghar</p>
                         <p>Peoples Colony, Ferozewala</p>
-                        <p>WhatsApp: 0301-7625888</p>
+                        <p><i class="fa-brands fa-whatsapp"></i> 0301-7625888</p>
+                        <p><i class="fa-brands fa-whatsapp"></i> 0300-4119322</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +81,7 @@
                 <h3><i class="fa-solid fa-sliders"></i> Shop Owner Control Panel (Nadeem Asghar)</h3>
                 <button id="closeAdminBtn" class="btn-close reactive-tab">&times;</button>
             </div>
-            <p class="admin-note">Post updates/posters, add services, or update information contact details.</p>
+            <p class="admin-note">Post updates/posters, add services, or update both WhatsApp information contact numbers.</p>
 
             <div class="admin-grid">
                 <!-- Form 1: Add Update -->
@@ -137,15 +144,18 @@
                     </form>
                 </div>
 
-                <!-- Form 3: Quick Contact Name Editor -->
+                <!-- Form 3: Quick Contact Settings (Both WhatsApp Numbers) -->
                 <div class="admin-card reactive-card">
                     <h4><i class="fa-brands fa-whatsapp"></i> Information Contact Settings</h4>
                     <form id="contactSettingsForm">
-                        <label>Information Contact Name</label>
+                        <label>Primary Contact Name</label>
                         <input type="text" id="infoContactNameInput" placeholder="e.g., Mr. Baloch" required>
 
-                        <label>Information WhatsApp Number</label>
+                        <label>Primary WhatsApp Number</label>
                         <input type="text" id="infoContactPhoneInput" placeholder="e.g., 0301-7625888" required>
+
+                        <label>Backup / Emergency WhatsApp Number</label>
+                        <input type="text" id="infoContactPhone2Input" placeholder="e.g., 0300-4119322" required>
 
                         <button type="submit" class="btn-primary full-width reactive-tab">Save Contact Info</button>
                     </form>
@@ -191,12 +201,22 @@
                     <p class="owner-name"><i class="fa-solid fa-user-tie"></i> Proprietor: <strong>Nadeem Asghar</strong></p>
                     <p class="address-line"><i class="fa-solid fa-location-dot"></i> <strong>M73J+7RX Geo Net Cafe, Peoples Colony, Ferozewala</strong></p>
 
+                    <!-- Single Highlighted Info Box with Clickable WhatsApp Numbers -->
                     <div class="info-contact-highlight reactive-tab">
                         <span class="info-highlight-label">For more any information contact this number</span>
                         <div class="info-contact-row">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <strong id="displayInfoPhone">0301-7625888</strong>
-                            <span class="contact-person-tag">(<span id="displayInfoName">Mr. Baloch</span>)</span>
+                            <a id="infoBoxWaLink1" href="https://wa.me/923017625888" target="_blank" class="info-wa-clickable">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <strong id="displayInfoPhone">0301-7625888</strong>
+                                <span class="contact-person-tag">(<span id="displayInfoName">Mr. Baloch</span>)</span>
+                            </a>
+                        </div>
+                        <div class="info-contact-row info-contact-secondary">
+                            <a id="infoBoxWaLink2" href="https://wa.me/923004119322" target="_blank" class="info-wa-clickable">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <strong id="displayInfoPhone2">0300-4119322</strong>
+                                <span class="contact-backup-tag">(Backup WhatsApp)</span>
+                            </a>
                         </div>
                     </div>
 
@@ -208,7 +228,10 @@
                             <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
                         </a>
                         <a id="infoWhatsappBtn" href="https://wa.me/923017625888" target="_blank" class="btn-whatsapp-chat reactive-tab">
-                            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (0301-7625888)
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp 1: 0301-7625888 (Mr. Baloch)
+                        </a>
+                        <a id="infoWhatsappBtn2" href="https://wa.me/923004119322" target="_blank" class="btn-whatsapp-chat reactive-tab">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp 2: 0300-4119322 (Backup)
                         </a>
                     </div>
                 </div>
@@ -236,14 +259,23 @@
                     <i class="fa-brands fa-whatsapp"></i>
                     <span id="footerInfoPhone">0301-7625888</span>
                     (<span id="footerInfoName">Mr. Baloch</span>)
+                    <span class="footer-sep">|</span>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span id="footerInfoPhone2">0300-4119322</span>
+                    (Backup WhatsApp)
                 </p>
                 <p>Every Type of Online Facility Under One Roof • E-Stamp (100–3000) • NADRA & PakID • Vehicle & Biometric • Printing & CV Typing • Govt Jobs & Schemes • Admissions & Tests • Photo Studio</p>
             </div>
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h4>Quick Links & WhatsApp</h4>
                 <a href="#updates" class="reactive-tab">Daily Updates</a>
                 <a href="#services" class="reactive-tab">All Services</a>
-                <a id="footerWhatsappLink" href="https://wa.me/923017625888" target="_blank" class="reactive-tab">WhatsApp Us</a>
+                <a id="footerWhatsappLink" href="https://wa.me/923017625888" target="_blank" class="footer-wa-pill reactive-tab">
+                    <i class="fa-brands fa-whatsapp"></i> <span id="footerWaPillText1">0301-7625888</span>
+                </a>
+                <a id="footerWhatsappLink2" href="https://wa.me/923004119322" target="_blank" class="footer-wa-pill reactive-tab">
+                    <i class="fa-brands fa-whatsapp"></i> <span id="footerWaPillText2">0300-4119322</span>
+                </a>
             </div>
         </div>
         <div class="footer-bottom">
