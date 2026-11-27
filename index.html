@@ -3,57 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geo Net Cafe - Muhammad Nadeem</title>
+    <title>Geo Net Cafe - Nadeem Asghar</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- Ambient Mouse Glow Layer -->
+    <div id="mouseAura" class="mouse-aura" aria-hidden="true"></div>
+
     <!-- Header & Navigation -->
-    <header>
+    <header class="reactive-surface">
         <div class="container nav-container">
-            <div class="logo">
+            <div class="logo reactive-tab">
                 <i class="fa-solid fa-globe"></i>
                 <div>
                     <h1>GEO NET CAFE</h1>
-                    <span>Proprietor: Muhammad Nadeem</span>
+                    <span>Proprietor: Nadeem Asghar</span>
                 </div>
             </div>
             <nav>
-                <a href="#updates">Daily Updates</a>
-                <a href="#services">Services</a>
-                <a href="#location">Map & Location</a>
-                <button id="adminLoginBtn" class="nav-admin-btn">
+                <a href="#updates" class="reactive-tab">Daily Updates</a>
+                <a href="#services" class="reactive-tab">Services</a>
+                <a href="#location" class="reactive-tab">Map & Location</a>
+                <button id="adminLoginBtn" class="nav-admin-btn reactive-tab">
                     <i class="fa-solid fa-lock"></i> Owner Login
                 </button>
-                <a href="https://wa.me/923144409322" target="_blank" class="nav-whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i> 0314-4409322
+                <a href="https://wa.me/923017625888" target="_blank" class="nav-whatsapp reactive-tab">
+                    <i class="fa-brands fa-whatsapp"></i> 0301-7625888
                 </a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero reactive-surface">
         <div class="container hero-content-wrapper">
             <div class="hero-text hero-animate">
-                <span class="hero-badge"><i class="fa-solid fa-bolt"></i> FAST ONLINE SERVICES SINCE 2010</span>
+                <div class="top-one-roof-banner reactive-tab">
+                    <i class="fa-solid fa-star"></i> EVERY TYPE OF ONLINE FACILITY UNDER ONE ROOF
+                </div>
+                <span class="hero-badge reactive-tab"><i class="fa-solid fa-bolt"></i> BEST ONLINE SERVICES SHOP IN 2026</span>
                 <h2>THE BEST <span class="highlight">DIGITAL & NET CAFE</span> IN TOWN</h2>
-                <p>Official E-Stamp papers, Biometric verification, Duplicate PVC cards, Driving learner license, Govt job applications, Lahore Board admissions & studio printing.</p>
+                <p>E-Stamp (Rs. 100 to 3000), NADRA & PakID services, Vehicle & Biometric services, Printing & CV Typing, Govt Jobs & Schemes, Admissions & Tests, and Photo Studio.</p>
                 <div class="hero-buttons">
-                    <a href="#services" class="btn-primary">Explore All Services</a>
-                    <a href="https://wa.me/923144409322" target="_blank" class="btn-whatsapp-hero">
+                    <a href="#services" class="btn-primary reactive-tab">Explore All Services</a>
+                    <a href="https://wa.me/923017625888" target="_blank" class="btn-whatsapp-hero reactive-tab">
                         <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
                     </a>
                 </div>
             </div>
             <div class="hero-card-visual">
-                <div class="shop-photo-card">
+                <div class="shop-photo-card reactive-card">
                     <div id="fallbackShopIcon">
                         <i class="fa-solid fa-store"></i>
                         <h4>Geo Net Cafe</h4>
+                        <p>Proprietor: Nadeem Asghar</p>
                         <p>Peoples Colony, Ferozewala</p>
-                        <p>WhatsApp: 0314-4409322</p>
+                        <p>WhatsApp: 0301-7625888</p>
                     </div>
                 </div>
             </div>
@@ -61,22 +68,22 @@
     </section>
 
     <!-- Owner Admin Panel -->
-    <section id="adminSection" class="admin-panel hidden">
+    <section id="adminSection" class="admin-panel hidden reactive-surface">
         <div class="container">
             <div class="admin-header">
-                <h3><i class="fa-solid fa-sliders"></i> Shop Owner Control Panel (Muhammad Nadeem)</h3>
-                <button id="closeAdminBtn" class="btn-close">&times;</button>
+                <h3><i class="fa-solid fa-sliders"></i> Shop Owner Control Panel (Nadeem Asghar)</h3>
+                <button id="closeAdminBtn" class="btn-close reactive-tab">&times;</button>
             </div>
-            <p class="admin-note">Post updates/posters or add services.</p>
-            
+            <p class="admin-note">Post updates/posters, add services, or update information contact details.</p>
+
             <div class="admin-grid">
                 <!-- Form 1: Add Update -->
-                <div class="admin-card">
+                <div class="admin-card reactive-card">
                     <h4><i class="fa-solid fa-bullhorn"></i> Post Daily Update Poster</h4>
                     <form id="addUpdateForm">
                         <label>Update Title / Job Name</label>
                         <input type="text" id="updateTitle" placeholder="e.g., Punjab Police Jobs" required>
-                        
+
                         <label>Category</label>
                         <select id="updateCategory">
                             <option value="Govt Jobs">New Govt Jobs</option>
@@ -93,18 +100,18 @@
 
                         <label>Details / Requirements</label>
                         <textarea id="updateDesc" rows="3" placeholder="Enter last date or requirements..." required></textarea>
-                        
-                        <button type="submit" class="btn-primary full-width">Publish Update</button>
+
+                        <button type="submit" class="btn-primary full-width reactive-tab">Publish Update</button>
                     </form>
                 </div>
 
                 <!-- Form 2: Add Service -->
-                <div class="admin-card">
+                <div class="admin-card reactive-card">
                     <h4><i class="fa-solid fa-plus-circle"></i> Add New Service</h4>
                     <form id="addServiceForm">
                         <label>Service Name</label>
                         <input type="text" id="serviceTitle" placeholder="Service Name" required>
-                        
+
                         <label>Sample Image URL (Optional)</label>
                         <input type="url" id="serviceImage" placeholder="Paste direct image URL (optional)">
                         <label>Or Upload Service Image</label>
@@ -125,8 +132,22 @@
 
                         <label>Short Description</label>
                         <textarea id="serviceDesc" rows="2" placeholder="Description..." required></textarea>
-                        
-                        <button type="submit" class="btn-primary full-width">Add Service</button>
+
+                        <button type="submit" class="btn-primary full-width reactive-tab">Add Service</button>
+                    </form>
+                </div>
+
+                <!-- Form 3: Quick Contact Name Editor -->
+                <div class="admin-card reactive-card">
+                    <h4><i class="fa-brands fa-whatsapp"></i> Information Contact Settings</h4>
+                    <form id="contactSettingsForm">
+                        <label>Information Contact Name</label>
+                        <input type="text" id="infoContactNameInput" placeholder="e.g., Mr. Baloch" required>
+
+                        <label>Information WhatsApp Number</label>
+                        <input type="text" id="infoContactPhoneInput" placeholder="e.g., 0301-7625888" required>
+
+                        <button type="submit" class="btn-primary full-width reactive-tab">Save Contact Info</button>
                     </form>
                 </div>
             </div>
@@ -134,7 +155,7 @@
     </section>
 
     <!-- Daily Updates Section -->
-    <section id="updates" class="updates-section">
+    <section id="updates" class="updates-section reactive-surface">
         <div class="container">
             <div class="section-title">
                 <h2><i class="fa-solid fa-bell"></i> Daily Updates & Job Posters</h2>
@@ -145,18 +166,18 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services-section">
+    <section id="services" class="services-section reactive-surface">
         <div class="container">
             <div class="section-title">
                 <h2><i class="fa-solid fa-briefcase"></i> Our Complete Services</h2>
-                <p>Professional documentation, online applications, and printing solutions</p>
+                <p>Every type of online facility under one roof — documentation, applications & printing</p>
             </div>
             <div id="servicesContainer" class="services-grid"></div>
         </div>
     </section>
 
     <!-- Location & Map Section -->
-    <section id="location" class="location-section">
+    <section id="location" class="location-section reactive-surface">
         <div class="container">
             <div class="section-title">
                 <h2><i class="fa-solid fa-map-pin"></i> Visit Our Shop</h2>
@@ -164,32 +185,39 @@
             </div>
 
             <div class="location-wrapper">
-                <div class="location-details">
-                    <div class="loc-badge"><i class="fa-solid fa-store"></i> Open Now</div>
+                <div class="location-details reactive-card">
+                    <div class="loc-badge reactive-tab"><i class="fa-solid fa-store"></i> Open Now</div>
                     <h3>Geo Net Cafe</h3>
-                    <p class="owner-name"><i class="fa-solid fa-user-tie"></i> Proprietor: <strong>Muhammad Nadeem</strong></p>
+                    <p class="owner-name"><i class="fa-solid fa-user-tie"></i> Proprietor: <strong>Nadeem Asghar</strong></p>
                     <p class="address-line"><i class="fa-solid fa-location-dot"></i> <strong>M73J+7RX Geo Net Cafe, Peoples Colony, Ferozewala</strong></p>
-                    <p class="contact-line"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <strong>0314-4409322</strong></p>
-                    <p class="contact-line"><i class="fa-solid fa-phone"></i> Phone 2: <strong>0300-4119322</strong></p>
+
+                    <div class="info-contact-highlight reactive-tab">
+                        <span class="info-highlight-label">For more any information contact this number</span>
+                        <div class="info-contact-row">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <strong id="displayInfoPhone">0301-7625888</strong>
+                            <span class="contact-person-tag">(<span id="displayInfoName">Mr. Baloch</span>)</span>
+                        </div>
+                    </div>
 
                     <div class="map-actions">
-                        <a id="directMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala" target="_blank" class="btn-direction">
+                        <a id="directMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala" target="_blank" class="btn-direction reactive-tab">
                             <i class="fa-solid fa-diamond-turn-right"></i> Get Live Map Directions
                         </a>
-                        <a id="openMapPinBtn" href="https://www.google.com/maps/search/?api=1&query=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala" target="_blank" class="btn-outline-map">
+                        <a id="openMapPinBtn" href="https://www.google.com/maps/search/?api=1&query=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala" target="_blank" class="btn-outline-map reactive-tab">
                             <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
                         </a>
-                        <a href="https://wa.me/923144409322" target="_blank" class="btn-whatsapp-chat">
-                            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (0314-4409322)
+                        <a id="infoWhatsappBtn" href="https://wa.me/923017625888" target="_blank" class="btn-whatsapp-chat reactive-tab">
+                            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (0301-7625888)
                         </a>
                     </div>
                 </div>
 
-                <div class="map-frame">
-                    <iframe 
+                <div class="map-frame reactive-card">
+                    <iframe
                         id="googleMapIframe"
-                        src="https://maps.google.com/maps?q=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala&t=&z=16&ie=UTF8&iwloc=&output=embed" 
-                        allowfullscreen="" 
+                        src="https://maps.google.com/maps?q=M73J+7RX+Geo+Net+Cafe+Peoples+Colony+Ferozewala&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen=""
                         loading="lazy">
                     </iframe>
                 </div>
@@ -198,23 +226,28 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="reactive-surface">
         <div class="container footer-content">
             <div class="footer-info">
                 <h3>GEO NET CAFE</h3>
-                <p><strong>Owner:</strong> Muhammad Nadeem</p>
-                <p><strong>Contacts:</strong> 0314-4409322 | 0300-4119322</p>
-                <p>E-Stamp • Biometric • PVC Cards • Learner License • Govt Jobs • Lahore Board Admissions & Results • Passport Photos • A4 Frames • Number Plates • Stationery</p>
+                <p><strong>Owner:</strong> Nadeem Asghar</p>
+                <p class="footer-info-contact reactive-tab">
+                    <strong>For more any information contact this number:</strong>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span id="footerInfoPhone">0301-7625888</span>
+                    (<span id="footerInfoName">Mr. Baloch</span>)
+                </p>
+                <p>Every Type of Online Facility Under One Roof • E-Stamp (100–3000) • NADRA & PakID • Vehicle & Biometric • Printing & CV Typing • Govt Jobs & Schemes • Admissions & Tests • Photo Studio</p>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
-                <a href="#updates">Daily Updates</a>
-                <a href="#services">All Services</a>
-                <a href="https://wa.me/923144409322" target="_blank">WhatsApp Us</a>
+                <a href="#updates" class="reactive-tab">Daily Updates</a>
+                <a href="#services" class="reactive-tab">All Services</a>
+                <a id="footerWhatsappLink" href="https://wa.me/923017625888" target="_blank" class="reactive-tab">WhatsApp Us</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Geo Net Cafe | Managed by Muhammad Nadeem. All Rights Reserved.</p>
+            <p>&copy; 2026 Geo Net Cafe | Managed by Nadeem Asghar. All Rights Reserved.</p>
         </div>
     </footer>
 
