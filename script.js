@@ -82,13 +82,13 @@ function createServiceGraphic(label, sublabel) {
     return createAIArtImage(label, sublabel, "AI SERVICE VISUAL");
 }
 
-// Updated Core Services (V17)
+// Updated Core Services (V18) with newly added E-Stamp & Frames images
 const defaultServices = [
     {
         id: 1,
         title: "Official E-Stamp Papers",
         icon: "fa-stamp",
-        image: "WhatsApp Image 2026-11-26 at 3.19.33 PM_2.jpeg",
+        image: "WhatsApp Image 2026-11-26 at 3.19.33 PM_3.jpeg",
         desc: "Official E-Stamp papers available in Rs. 100 / 200 / 300 / 500 / 1000 / 1200 / 2000 / 3000 denominations for affidavits, agreements, and legal documentation."
     },
     {
@@ -137,7 +137,7 @@ const defaultServices = [
         id: 8,
         title: "A4 Size Photo Frames",
         icon: "fa-image",
-        image: "0001.jfif",
+        image: "0001_2.jfif",
         desc: "Elegant A4 size frames available for certificates, degrees, portraits, and memorable photos."
     },
     {
@@ -191,7 +191,7 @@ const defaultUpdates = [
 ];
 
 // Contact state (can be changed easily from Owner Admin Panel)
-let infoContact = JSON.parse(localStorage.getItem('geoCafeInfoContactV17')) || {
+let infoContact = JSON.parse(localStorage.getItem('geoCafeInfoContactV18')) || {
     name: DEFAULT_INFO_CONTACT_NAME,
     phone: DEFAULT_INFO_CONTACT_PHONE,
     phone2: DEFAULT_INFO_CONTACT_PHONE_2
@@ -285,10 +285,10 @@ function applyContactInfo() {
 }
 
 // Always load default services + any newly added ones from admin
-let customServices = JSON.parse(localStorage.getItem('geoCafeCustomServicesV17')) || [];
+let customServices = JSON.parse(localStorage.getItem('geoCafeCustomServicesV18')) || [];
 let services = [...defaultServices, ...customServices];
 
-let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV17'));
+let storedUpdates = JSON.parse(localStorage.getItem('geoCafeUpdatesV18'));
 let updates = (storedUpdates && storedUpdates.length > 0) ? storedUpdates : defaultUpdates;
 
 const adminSection = document.getElementById('adminSection');
@@ -353,13 +353,13 @@ function renderServices() {
 
 function deleteUpdate(id) {
     updates = updates.filter(u => u.id !== id);
-    localStorage.setItem('geoCafeUpdatesV17', JSON.stringify(updates));
+    localStorage.setItem('geoCafeUpdatesV18', JSON.stringify(updates));
     renderUpdates();
 }
 
 function deleteService(id) {
     customServices = customServices.filter(s => s.id !== id);
-    localStorage.setItem('geoCafeCustomServicesV17', JSON.stringify(customServices));
+    localStorage.setItem('geoCafeCustomServicesV18', JSON.stringify(customServices));
     services = [...defaultServices, ...customServices];
     renderServices();
 }
@@ -450,7 +450,7 @@ if (addUpdateForm) {
                 desc
             };
             updates.unshift(newUpdate);
-            localStorage.setItem('geoCafeUpdatesV17', JSON.stringify(updates));
+            localStorage.setItem('geoCafeUpdatesV18', JSON.stringify(updates));
             renderUpdates();
             addUpdateForm.reset();
             const preview = document.getElementById('updateImagePreview');
@@ -488,7 +488,7 @@ if (addServiceForm) {
                 isCustom: true
             };
             customServices.push(newService);
-            localStorage.setItem('geoCafeCustomServicesV17', JSON.stringify(customServices));
+            localStorage.setItem('geoCafeCustomServicesV18', JSON.stringify(customServices));
             services = [...defaultServices, ...customServices];
             renderServices();
             addServiceForm.reset();
@@ -515,7 +515,7 @@ if (contactSettingsForm) {
         const newPhone = document.getElementById('infoContactPhoneInput').value.trim() || DEFAULT_INFO_CONTACT_PHONE;
         const newPhone2 = document.getElementById('infoContactPhone2Input').value.trim() || DEFAULT_INFO_CONTACT_PHONE_2;
         infoContact = { name: newName, phone: newPhone, phone2: newPhone2 };
-        localStorage.setItem('geoCafeInfoContactV17', JSON.stringify(infoContact));
+        localStorage.setItem('geoCafeInfoContactV18', JSON.stringify(infoContact));
         applyContactInfo();
         renderUpdates();
         alert("Information contact updated!");
