@@ -88,7 +88,7 @@ const defaultServices = [
         id: 1,
         title: "Official E-Stamp Papers",
         icon: "fa-stamp",
-        image: "WhatsApp Image 2026-11-26 at 3.19.33 PM_3.jpeg",
+        image: "WhatsApp Image 2026-11-26 at 3.19.33 PM.jpeg",
         desc: "Official E-Stamp papers available in Rs. 100 / 200 / 300 / 500 / 1000 / 1200 / 2000 / 3000 denominations for affidavits, agreements, and legal documentation."
     },
     {
@@ -130,7 +130,7 @@ const defaultServices = [
         id: 7,
         title: "Photo Studio Services",
         icon: "fa-camera",
-        image: "images (5).jfif",
+        image: "0001.jfif",
         desc: "Urgent Passport Size Pictures, Visa Photos, White & Blue Background Images, Photo Retouching, <span class='highlighted-pill'>35x45mm Visa Photos</span>, and HD Photo Enhancing."
     },
     {
